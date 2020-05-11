@@ -312,6 +312,7 @@ SWIFT_CLASS("_TtC5IMKit26IMAudioInputViewController")
 SWIFT_CLASS("_TtC5IMKit27IMMessageCollectionViewCell")
 @interface IMMessageCollectionViewCell : UICollectionViewCell
 - (void)prepareForReuse;
+- (void)handleAvatarTapped;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -386,6 +387,12 @@ SWIFT_CLASS("_TtC5IMKit36IMCarouselTemplateCollectionViewCell")
 - (void)prepareForReuse;
 @end
 
+@class UIGestureRecognizer;
+
+@interface IMCarouselTemplateCollectionViewCell (SWIFT_EXTENSION(IMKit)) <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer * _Nonnull)gestureRecognizer SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class UICollectionView;
 @class UICollectionViewLayout;
 
@@ -419,6 +426,8 @@ SWIFT_CLASS("_TtC5IMKit35IMCarouselTemplateSectionController")
 - (void)didSelectItemAtIndex:(NSInteger)index;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit24IMCircularProgressButton")
@@ -624,11 +633,11 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
-
-
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
+
+
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -960,6 +969,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly, copy) NSDate * _Nullable pinTime;
 @property (nonatomic, readonly) NSInteger numberOfUnreadMessages;
 @property (nonatomic, readonly) BOOL isMuted;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull hideTime;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)indexedProperties SWIFT_WARN_UNUSED_RESULT;
@@ -972,6 +982,12 @@ SWIFT_CLASS("_TtC5IMKit24IMRoomCollectionViewCell")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)prepareForReuse;
+- (void)actionButtonTappedWithButton:(UIButton * _Nonnull)button;
+@end
+
+
+@interface IMRoomCollectionViewCell (SWIFT_EXTENSION(IMKit)) <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer * _Nonnull)gestureRecognizer SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1008,13 +1024,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
-
-
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
@@ -1027,16 +1043,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=11.0);
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1055,16 +1071,17 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @end
 
 
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)scrollViewWillBeginDragging:(UIScrollView * _Nonnull)scrollView;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 
@@ -1752,6 +1769,7 @@ SWIFT_CLASS("_TtC5IMKit26IMAudioInputViewController")
 SWIFT_CLASS("_TtC5IMKit27IMMessageCollectionViewCell")
 @interface IMMessageCollectionViewCell : UICollectionViewCell
 - (void)prepareForReuse;
+- (void)handleAvatarTapped;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1826,6 +1844,12 @@ SWIFT_CLASS("_TtC5IMKit36IMCarouselTemplateCollectionViewCell")
 - (void)prepareForReuse;
 @end
 
+@class UIGestureRecognizer;
+
+@interface IMCarouselTemplateCollectionViewCell (SWIFT_EXTENSION(IMKit)) <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer * _Nonnull)gestureRecognizer SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @class UICollectionView;
 @class UICollectionViewLayout;
 
@@ -1859,6 +1883,8 @@ SWIFT_CLASS("_TtC5IMKit35IMCarouselTemplateSectionController")
 - (void)didSelectItemAtIndex:(NSInteger)index;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit24IMCircularProgressButton")
@@ -2064,11 +2090,11 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
-
-
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
+
+
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -2400,6 +2426,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly, copy) NSDate * _Nullable pinTime;
 @property (nonatomic, readonly) NSInteger numberOfUnreadMessages;
 @property (nonatomic, readonly) BOOL isMuted;
+@property (nonatomic, readonly, copy) NSDate * _Nonnull hideTime;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)indexedProperties SWIFT_WARN_UNUSED_RESULT;
@@ -2412,6 +2439,12 @@ SWIFT_CLASS("_TtC5IMKit24IMRoomCollectionViewCell")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)prepareForReuse;
+- (void)actionButtonTappedWithButton:(UIButton * _Nonnull)button;
+@end
+
+
+@interface IMRoomCollectionViewCell (SWIFT_EXTENSION(IMKit)) <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer * _Nonnull)gestureRecognizer SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -2448,13 +2481,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
-
-
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
@@ -2467,16 +2500,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=11.0);
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -2495,16 +2528,17 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @end
 
 
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView * _Nonnull)collectionView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)scrollViewWillBeginDragging:(UIScrollView * _Nonnull)scrollView;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView willDisplayCell:(UICollectionViewCell * _Nonnull)cell forItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 
