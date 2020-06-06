@@ -25,7 +25,7 @@ IMKit is a In-App Chat SDK,  more detail please visit: https://imkit.io
 [CocoaPods](https://cocoapods.org) is a dependency manager for Cocoa projects. For usage and installation instructions, visit their website. To integrate IMKit into your Xcode project using CocoaPods, specify it in your `Podfile`:
 
 ```ruby
-pod 'IMKit', :git => 'https://github.com/imkit/imkit-ios-framework-v3.git', :branch => 'swift4.2'
+pod 'IMKit', :git => 'https://github.com/imkit/imkit-ios-framework-v3.git', :branch => 'wbr'
 ```
 We enhanced [IGListKit](https://github.com/Instagram/IGListKit) and [SwiftLinkPreview](https://github.com/LeonardoCardoso/SwiftLinkPreview) to fit our need. So also specify them in your `Podfile`:
 
