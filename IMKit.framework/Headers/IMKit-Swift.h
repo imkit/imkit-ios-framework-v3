@@ -700,6 +700,19 @@ SWIFT_CLASS("_TtC5IMKit30IMInputAccessoryViewController")
 - (void)textViewDidChange:(UITextView * _Nonnull)textView;
 @end
 
+@class IMUser;
+
+SWIFT_CLASS("_TtC5IMKit12IMInvitation")
+@interface IMInvitation : RealmSwiftObject
+@property (nonatomic, copy) NSString * _Nonnull id;
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, strong) IMUser * _Nullable inviter;
+@property (nonatomic, copy) NSDate * _Nonnull createDate;
+@property (nonatomic, copy) NSDate * _Nonnull updateDate;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
++ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @protocol NSObject;
 
 SWIFT_CLASS("_TtC5IMKit13IMLinkPreview")
@@ -830,16 +843,16 @@ SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
-
-@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
 @class UIPresentationController;
 
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UITableView;
+
+@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 @class UITableViewCell;
@@ -1272,13 +1285,13 @@ SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @end
 
 
-
-
 @interface IMTextMessageSectionController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit54IMTextMessageWithLinkPreviewCollectionViewCellIncoming")
@@ -2157,6 +2170,19 @@ SWIFT_CLASS("_TtC5IMKit30IMInputAccessoryViewController")
 - (void)textViewDidChange:(UITextView * _Nonnull)textView;
 @end
 
+@class IMUser;
+
+SWIFT_CLASS("_TtC5IMKit12IMInvitation")
+@interface IMInvitation : RealmSwiftObject
+@property (nonatomic, copy) NSString * _Nonnull id;
+@property (nonatomic, copy) NSString * _Nonnull name;
+@property (nonatomic, strong) IMUser * _Nullable inviter;
+@property (nonatomic, copy) NSDate * _Nonnull createDate;
+@property (nonatomic, copy) NSDate * _Nonnull updateDate;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
++ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @protocol NSObject;
 
 SWIFT_CLASS("_TtC5IMKit13IMLinkPreview")
@@ -2287,16 +2313,16 @@ SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
-
-@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
 @class UIPresentationController;
 
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UITableView;
+
+@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 @class UITableViewCell;
@@ -2729,13 +2755,13 @@ SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @end
 
 
-
-
 @interface IMTextMessageSectionController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit54IMTextMessageWithLinkPreviewCollectionViewCellIncoming")
