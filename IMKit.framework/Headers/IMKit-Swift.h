@@ -1047,13 +1047,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
-
-
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
@@ -1066,16 +1066,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=11.0);
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol UICollectionViewDropCoordinator;
@@ -1295,13 +1295,13 @@ SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @end
 
 
+
+
 @interface IMTextMessageSectionController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 SWIFT_CLASS("_TtC5IMKit54IMTextMessageWithLinkPreviewCollectionViewCellIncoming")
@@ -1462,6 +1462,8 @@ SWIFT_CLASS("_TtC5IMKit12TriangleView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)drawRect:(CGRect)rect;
 @end
+
+
 
 
 
@@ -2527,13 +2529,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
-
-
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
@@ -2546,16 +2548,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=11.0);
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol UICollectionViewDropCoordinator;
@@ -2775,13 +2777,13 @@ SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @end
 
 
+
+
 @interface IMTextMessageSectionController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 SWIFT_CLASS("_TtC5IMKit54IMTextMessageWithLinkPreviewCollectionViewCellIncoming")
@@ -2942,6 +2944,8 @@ SWIFT_CLASS("_TtC5IMKit12TriangleView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)drawRect:(CGRect)rect;
 @end
+
+
 
 
 
