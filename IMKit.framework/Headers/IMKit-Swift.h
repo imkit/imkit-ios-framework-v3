@@ -466,6 +466,17 @@ SWIFT_CLASS("_TtC5IMKit23IMDateSectionController")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit37IMDisableInputAccessoryViewController")
+@interface IMDisableInputAccessoryViewController : UIInputViewController
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewDidLayoutSubviews;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit6IMFile")
 @interface IMFile : RealmSwiftObject
 @property (nonatomic, readonly, copy) NSData * _Nullable data;
@@ -1066,16 +1077,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=11.0);
-@end
-
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol UICollectionViewDropCoordinator;
@@ -1948,6 +1959,17 @@ SWIFT_CLASS("_TtC5IMKit23IMDateSectionController")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit37IMDisableInputAccessoryViewController")
+@interface IMDisableInputAccessoryViewController : UIInputViewController
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewDidLayoutSubviews;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit6IMFile")
 @interface IMFile : RealmSwiftObject
 @property (nonatomic, readonly, copy) NSData * _Nullable data;
@@ -2548,16 +2570,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT SWIFT_AVAILABILITY(ios,introduced=11.0);
-@end
-
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @protocol UICollectionViewDropCoordinator;
