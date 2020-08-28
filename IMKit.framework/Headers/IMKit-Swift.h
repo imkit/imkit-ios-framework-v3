@@ -644,11 +644,11 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
+
+
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
-
-
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -1048,13 +1048,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
+
+
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
@@ -2125,11 +2125,11 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
+
+
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
-
-
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -2529,13 +2529,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
+
+
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
