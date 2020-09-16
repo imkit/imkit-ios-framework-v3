@@ -996,6 +996,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 @property (nonatomic, readonly, copy) NSString * _Nonnull desc;
 @property (nonatomic, readonly, copy) NSString * _Nonnull lastMessage;
+@property (nonatomic, copy) NSString * _Nonnull coverString;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull createTime;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull updateTime;
 @property (nonatomic, readonly, copy) NSDate * _Nullable pinTime;
