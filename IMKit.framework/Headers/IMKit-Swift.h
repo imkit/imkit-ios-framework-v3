@@ -819,6 +819,8 @@ SWIFT_CLASS("_TtC5IMKit9IMMessage")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull createTime;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull updateTime;
 @property (nonatomic, readonly, copy) NSString * _Nonnull senderID;
+@property (nonatomic, copy) NSString * _Nonnull senderNickname;
+@property (nonatomic, copy) NSString * _Nonnull senderAvatarString;
 @property (nonatomic, readonly, strong) IMImage * _Nullable image;
 @property (nonatomic, readonly, strong) IMFile * _Nullable file;
 @property (nonatomic, readonly, strong) IMSystemEvent * _Nullable systemEvent;
@@ -1021,6 +1023,26 @@ SWIFT_CLASS("_TtC5IMKit24IMRoomGroupTableViewCell")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit29IMRoomSearchingViewController")
+@interface IMRoomSearchingViewController : UIObservableViewController
+- (void)viewDidLoad;
+- (void)viewDidAppear:(BOOL)animated;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMRoomSearchingViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface IMRoomSearchingViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit19IMRoomTableViewCell")
 @interface IMRoomTableViewCell : UITableViewCell
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
@@ -1061,16 +1083,16 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
-- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
-@end
-
 @protocol UIDragSession;
 @class UIDragItem;
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)tableView:(UITableView * _Nonnull)tableView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
+- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 @end
 
 @protocol UITableViewDropCoordinator;
