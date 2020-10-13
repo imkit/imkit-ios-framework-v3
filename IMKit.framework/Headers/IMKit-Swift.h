@@ -635,10 +635,10 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
-
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
+
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -1093,6 +1093,12 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
 - (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+@class UISearchBar;
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UISearchBarDelegate>
+- (void)searchBar:(UISearchBar * _Nonnull)searchBar textDidChange:(NSString * _Nonnull)searchText;
 @end
 
 @protocol UITableViewDropCoordinator;
