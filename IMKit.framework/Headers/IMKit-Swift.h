@@ -829,6 +829,8 @@ SWIFT_CLASS("_TtC5IMKit9IMMessage")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull createTime;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull updateTime;
 @property (nonatomic, readonly, copy) NSString * _Nonnull senderID;
+@property (nonatomic, copy) NSString * _Nonnull senderNickname;
+@property (nonatomic, copy) NSString * _Nonnull senderAvatarString;
 @property (nonatomic, readonly, strong) IMImage * _Nullable image;
 @property (nonatomic, readonly, strong) IMFile * _Nullable file;
 @property (nonatomic, readonly, strong) IMSystemEvent * _Nullable systemEvent;
@@ -853,16 +855,16 @@ SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
-
-@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
 @class UIPresentationController;
 
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UITableView;
+
+@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 @class UITableViewCell;
@@ -908,10 +910,21 @@ SWIFT_CLASS("_TtC5IMKit24IMMessagesViewController")
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent * _Nullable)event;
 - (void)viewDidLayoutSubviews;
 @property (nonatomic, readonly) BOOL canBecomeFirstResponder;
+- (void)presentViewController:(UIViewController * _Nonnull)viewControllerToPresent animated:(BOOL)flag completion:(void (^ _Nullable)(void))completion;
 - (void)infoButtonTapped;
+- (void)searchButtonTapped;
 - (void)titleViewTapped;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UINavigationController;
+@protocol UIViewControllerAnimatedTransitioning;
+@protocol UIViewControllerInteractiveTransitioning;
+
+@interface IMMessagesViewController (SWIFT_EXTENSION(IMKit)) <UINavigationControllerDelegate>
+- (id <UIViewControllerAnimatedTransitioning> _Nullable)navigationController:(UINavigationController * _Nonnull)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController * _Nonnull)fromVC toViewController:(UIViewController * _Nonnull)toVC SWIFT_WARN_UNUSED_RESULT;
+- (id <UIViewControllerInteractiveTransitioning> _Nullable)navigationController:(UINavigationController * _Nonnull)navigationController interactionControllerForAnimationController:(id <UIViewControllerAnimatedTransitioning> _Nonnull)animationController SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class IGListAdapter;
@@ -1027,6 +1040,26 @@ SWIFT_CLASS("_TtC5IMKit24IMRoomGroupTableViewCell")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit29IMRoomSearchingViewController")
+@interface IMRoomSearchingViewController : UIObservableViewController
+- (void)viewDidLoad;
+- (void)viewDidAppear:(BOOL)animated;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMRoomSearchingViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface IMRoomSearchingViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit19IMRoomTableViewCell")
 @interface IMRoomTableViewCell : UITableViewCell
 - (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
@@ -1050,13 +1083,13 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
-
-
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
+
+
 
 
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
@@ -1078,6 +1111,12 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
 - (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+@class UISearchBar;
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UISearchBarDelegate>
+- (void)searchBar:(UISearchBar * _Nonnull)searchBar textDidChange:(NSString * _Nonnull)searchText;
 @end
 
 @protocol UITableViewDropCoordinator;
@@ -1296,13 +1335,13 @@ SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @end
 
 
+
+
 @interface IMTextMessageSectionController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
 
 
 SWIFT_CLASS("_TtC5IMKit54IMTextMessageWithLinkPreviewCollectionViewCellIncoming")
@@ -1463,6 +1502,8 @@ SWIFT_CLASS("_TtC5IMKit12TriangleView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)drawRect:(CGRect)rect;
 @end
+
+
 
 
 
