@@ -906,6 +906,7 @@ SWIFT_CLASS("_TtC5IMKit24IMMessagesViewController")
 @property (nonatomic, readonly, strong) UIInputViewController * _Nullable inputViewController;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;
 - (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent * _Nullable)event;
 - (void)viewDidLayoutSubviews;
