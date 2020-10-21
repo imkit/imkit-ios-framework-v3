@@ -999,6 +999,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @interface IMRoom : RealmSwiftObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull roomDisplayName;
 @property (nonatomic, readonly, copy) NSString * _Nonnull desc;
 @property (nonatomic, readonly, copy) NSString * _Nonnull lastMessage;
 @property (nonatomic, copy) NSString * _Nonnull coverString;
