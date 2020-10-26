@@ -190,6 +190,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import Foundation;
 @import IGListDiffKit;
 @import IGListKit;
+@import MapKit;
+@import QuickLook;
 @import RealmSwift;
 @import UIKit;
 #endif
@@ -524,6 +526,26 @@ SWIFT_CLASS("_TtC5IMKit30IMFileMessageSectionController")
 
 
 
+SWIFT_CLASS("_TtC5IMKit26IMFileViewerViewController")
+@interface IMFileViewerViewController : QLPreviewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol QLPreviewItem;
+
+@interface IMFileViewerViewController (SWIFT_EXTENSION(IMKit)) <QLPreviewControllerDelegate>
+- (BOOL)previewController:(QLPreviewController * _Nonnull)controller shouldOpenURL:(NSURL * _Nonnull)url forPreviewItem:(id <QLPreviewItem> _Nonnull)item SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMFileViewerViewController (SWIFT_EXTENSION(IMKit)) <QLPreviewControllerDataSource>
+- (NSInteger)numberOfPreviewItemsInPreviewController:(QLPreviewController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+- (id <QLPreviewItem> _Nonnull)previewController:(QLPreviewController * _Nonnull)controller previewItemAtIndex:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit38IMForwardingMessagesCollectionViewCell")
 @interface IMForwardingMessagesCollectionViewCell : UICollectionViewCell
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -642,11 +664,11 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
+
+
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
-
-
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -809,6 +831,32 @@ SWIFT_CLASS("_TtC5IMKit29IMMapMessageSectionController")
 
 
 
+SWIFT_CLASS("_TtC5IMKit19IMMapViewController")
+@interface IMMapViewController : UIViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+@class MKMapView;
+@class MKUserLocation;
+@protocol MKAnnotation;
+@class MKAnnotationView;
+@class UIControl;
+
+@interface IMMapViewController (SWIFT_EXTENSION(IMKit)) <MKMapViewDelegate>
+- (void)mapView:(MKMapView * _Nonnull)mapView didUpdateUserLocation:(MKUserLocation * _Nonnull)userLocation;
+- (void)mapView:(MKMapView * _Nonnull)mapView didFailToLocateUserWithError:(NSError * _Nonnull)error;
+- (void)mapView:(MKMapView * _Nonnull)mapView regionWillChangeAnimated:(BOOL)animated;
+- (void)mapView:(MKMapView * _Nonnull)mapView regionDidChangeAnimated:(BOOL)animated;
+- (void)mapViewDidFinishRenderingMap:(MKMapView * _Nonnull)mapView fullyRendered:(BOOL)fullyRendered;
+- (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
+- (void)mapView:(MKMapView * _Nonnull)mapView annotationView:(MKAnnotationView * _Nonnull)view calloutAccessoryControlTapped:(UIControl * _Nonnull)control;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit16IMMemberProperty")
 @interface IMMemberProperty : RealmSwiftObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull uid;
@@ -855,16 +903,16 @@ SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UITableView;
-
-@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
 @class UIPresentationController;
 
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UITableView;
+
+@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 @class UITableViewCell;
@@ -999,6 +1047,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @interface IMRoom : RealmSwiftObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
+@property (nonatomic, readonly, copy) NSString * _Nonnull roomDisplayName;
 @property (nonatomic, readonly, copy) NSString * _Nonnull desc;
 @property (nonatomic, readonly, copy) NSString * _Nonnull lastMessage;
 @property (nonatomic, copy) NSString * _Nonnull coverString;
