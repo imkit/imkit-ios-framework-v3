@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IMKit'
-  s.version          = '0.269.0'
+  s.version          = '0.310.0'
   s.summary          = 'IMKit Framework'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/imkit/imkit-ios-framework-v3.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '11.0'
 
   # s.source_files = 'IMKit/Classes/**/*'
   # s.resources = 'IMKit/Assets/Assets.xcassets'
@@ -46,7 +46,7 @@ Pod::Spec.new do |s|
   s.dependency 'IGListKit', '~> 4.0.0'
   s.dependency 'PromiseKit', '~> 6.13.1'
   s.dependency 'Socket.IO-Client-Swift', '~> 15.2.0'
-  s.dependency 'Kingfisher', '~> 5.15.0'
+  s.dependency 'Kingfisher', '~> 5.15.7'
   s.dependency 'Alamofire', '~> 4.9.1'
   s.dependency 'RealmSwift', '~> 4.4.1'
   s.dependency 'SwiftLinkPreview', '~> 3.1.0'
