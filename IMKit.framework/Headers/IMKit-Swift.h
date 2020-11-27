@@ -1047,6 +1047,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly) BOOL isMuted;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull hideTime;
 @property (nonatomic, readonly) BOOL isRemovedFromRoom;
+@property (nonatomic, readonly, copy) NSString * _Nonnull extParams;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)indexedProperties SWIFT_WARN_UNUSED_RESULT;
