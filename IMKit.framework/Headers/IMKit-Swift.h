@@ -874,6 +874,7 @@ SWIFT_CLASS("_TtC5IMKit9IMMessage")
 @property (nonatomic, readonly, strong) IMLocation * _Nullable location;
 @property (nonatomic, readonly, strong) IMResponseObject * _Nullable responseObject;
 @property (nonatomic, readonly, copy) NSString * _Nonnull messageType;
+@property (nonatomic, copy) NSString * _Nonnull translatedText;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)ignoredProperties SWIFT_WARN_UNUSED_RESULT;
@@ -1048,6 +1049,7 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull hideTime;
 @property (nonatomic, readonly) BOOL isRemovedFromRoom;
 @property (nonatomic, readonly, copy) NSString * _Nonnull extParams;
+@property (nonatomic, readonly, copy) NSString * _Nullable pref;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)indexedProperties SWIFT_WARN_UNUSED_RESULT;
@@ -1344,6 +1346,7 @@ SWIFT_CLASS("_TtC5IMKit39IMTextMessageCollectionViewCellIncoming")
 @interface IMTextMessageCollectionViewCellIncoming : IMTextMessageCollectionViewCell
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
 @end
 
 
@@ -1456,6 +1459,7 @@ SWIFT_CLASS("_TtC5IMKit6IMUser")
 SWIFT_CLASS("_TtC5IMKit27IMUtilityCollectionViewCell")
 @interface IMUtilityCollectionViewCell : UICollectionViewCell
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
+@property (nonatomic, getter=isSelected) BOOL selected;
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)prepareForReuse;
