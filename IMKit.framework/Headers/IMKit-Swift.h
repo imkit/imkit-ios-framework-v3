@@ -884,6 +884,14 @@ SWIFT_CLASS("_TtC5IMKit9IMMessage")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit33IMMessageActionCollectionViewCell")
+@interface IMMessageActionCollectionViewCell : UICollectionViewCell
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 @interface IMMessageActionPopoverViewController : UIViewController
 - (void)viewDidLoad;
@@ -910,6 +918,25 @@ SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit30IMMessageActionsViewController")
+@interface IMMessageActionsViewController : UIViewController
+- (void)viewDidLoad;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMMessageActionsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface IMMessageActionsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -955,6 +982,11 @@ SWIFT_CLASS("_TtC5IMKit24IMMessagesViewController")
 - (void)titleViewTapped;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMMessagesViewController (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class UINavigationController;
