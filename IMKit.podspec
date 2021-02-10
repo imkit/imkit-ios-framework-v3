@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IMKit'
-  s.version          = '0.319.0'
+  s.version          = '0.320.0'
   s.summary          = 'IMKit Framework'
 
 # This description is used to generate tags and improve search results.
