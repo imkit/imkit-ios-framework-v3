@@ -188,11 +188,16 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import AVFoundation;
 @import CoreGraphics;
+@import CoreLocation;
+@import FloatingPanel;
 @import Foundation;
 @import IGListDiffKit;
 @import IGListKit;
 @import MapKit;
+@import ObjectiveC;
+@import Photos;
 @import QuickLook;
 @import Realm;
 @import UIKit;
@@ -295,7 +300,83 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) UIColor * _N
 + (UIColor * _Nonnull)accent4 SWIFT_WARN_UNUSED_RESULT;
 @end
 
+@class NSTextContainer;
+@class NSAttributedString;
+@class UIFont;
+
+SWIFT_CLASS("_TtC5IMKit16FlexibleTextView")
+@interface FlexibleTextView : UITextView
+- (nonnull instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer * _Nullable)textContainer SWIFT_UNAVAILABLE;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, copy) NSString * _Null_unspecified text;
+@property (nonatomic, strong) NSAttributedString * _Null_unspecified attributedText;
+@property (nonatomic, strong) UIFont * _Nullable font;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit24IMAddFolderTableViewCell")
+@interface IMAddFolderTableViewCell : UITableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
+@end
+
 @class NSBundle;
+
+SWIFT_CLASS("_TtC5IMKit25IMAddFolderViewController")
+@interface IMAddFolderViewController : UIViewController
+- (void)viewDidLoad;
+- (void)buttonTapped;
+- (void)closeButtonTapped;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class UITableView;
+
+@interface IMAddFolderViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
+- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+
+@interface IMAddFolderViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface IMAddFolderViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UITextField;
+
+@interface IMAddFolderViewController (SWIFT_EXTENSION(IMKit)) <UITextFieldDelegate>
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (void)textFieldDidChange:(UITextField * _Nonnull)textField;
+@end
+
+@class UIButton;
+
+SWIFT_CLASS("_TtC5IMKit22IMAddTagViewController")
+@interface IMAddTagViewController : UIViewController
+- (void)viewDidLoad;
+- (void)buttonTapped;
+- (void)colorButtonTappedWithButton:(UIButton * _Nonnull)button;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMAddTagViewController (SWIFT_EXTENSION(IMKit)) <UITextFieldDelegate>
+- (void)textFieldDidBeginEditing:(UITextField * _Nonnull)textField;
+- (void)textFieldDidChange:(UITextField * _Nonnull)textField;
+- (void)textFieldDidEndEditing:(UITextField * _Nonnull)textField;
+- (BOOL)textFieldShouldReturn:(UITextField * _Nonnull)textField SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textField:(UITextField * _Nonnull)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString * _Nonnull)string SWIFT_WARN_UNUSED_RESULT;
+@end
+
 
 SWIFT_CLASS("_TtC5IMKit26IMAudioInputViewController")
 @interface IMAudioInputViewController : UIInputViewController
@@ -358,6 +439,50 @@ SWIFT_CLASS("_TtC5IMKit31IMAudioMessageSectionController")
 
 
 
+SWIFT_CLASS("_TtC5IMKit22IMMessageTableViewCell")
+@interface IMMessageTableViewCell : UITableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
+- (void)bubbleViewDidTap;
+- (void)bubbleViewDidLongPress;
+- (void)checkBoxButtonDidTap;
+- (void)retryButtonDidTap;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit27IMAudioMessageTableViewCell")
+@interface IMAudioMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (void)removeFromSuperview;
+- (void)playerButionTap;
+- (void)audioStop:(NSNotification * _Nonnull)sender;
+- (void)handleCancelButtonTappedWithRecognizer:(UITapGestureRecognizer * _Nonnull)recognizer;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+SWIFT_CLASS("_TtC5IMKit13IMAudioPlayer")
+@interface IMAudioPlayer : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@class AVAudioPlayer;
+
+@interface IMAudioPlayer (SWIFT_EXTENSION(IMKit)) <AVAudioPlayerDelegate>
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer * _Nonnull)player successfully:(BOOL)flag;
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer * _Nonnull)player error:(NSError * _Nullable)error;
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer * _Nonnull)player;
+- (void)audioPlayerEndInterruption:(AVAudioPlayer * _Nonnull)player withOptions:(NSInteger)flags;
+@end
+
+
+
 SWIFT_CLASS("_TtC5IMKit12IMAvatarView")
 @interface IMAvatarView : UIView
 @property (nonatomic, strong) UIColor * _Nullable backgroundColor;
@@ -373,6 +498,21 @@ SWIFT_CLASS("_TtC5IMKit34IMButtonsTemplateSectionController")
 - (UICollectionViewCell * _Nonnull)cellForItemAtIndex:(NSInteger)index SWIFT_WARN_UNUSED_RESULT;
 - (void)didUpdateToObject:(id _Nonnull)object;
 - (void)didSelectItemAtIndex:(NSInteger)index;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit30IMButtonsTemplateTableViewCell")
+@interface IMButtonsTemplateTableViewCell : IMMessageTableViewCell
+- (void)buttonTapped:(UIButton * _Nonnull)button;
+- (void)bubbleViewDidLongPress;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit21IMCachingImageManager")
+@interface IMCachingImageManager : PHCachingImageManager
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -403,7 +543,6 @@ SWIFT_CLASS("_TtC5IMKit36IMCarouselTemplateCollectionViewCell")
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class UIButton;
 
 SWIFT_CLASS("_TtC5IMKit42IMCarouselTemplateColumnCollectionViewCell")
 @interface IMCarouselTemplateColumnCollectionViewCell : UICollectionViewCell
@@ -422,6 +561,89 @@ SWIFT_CLASS("_TtC5IMKit35IMCarouselTemplateSectionController")
 - (void)didUpdateToObject:(id _Nonnull)object;
 - (void)didSelectItemAtIndex:(NSInteger)index;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC5IMKit31IMCarouselTemplateTableViewCell")
+@interface IMCarouselTemplateTableViewCell : IMMessageTableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMCarouselTemplateTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMCarouselTemplateTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit29IMChatRoomTableViewHeaderView")
+@interface IMChatRoomTableViewHeaderView : UITableViewHeaderFooterView
+- (nonnull instancetype)initWithReuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit26UIObservableViewController")
+@interface UIObservableViewController : UIViewController
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewDidAppear:(BOOL)animated;
+- (void)viewDidDisappear:(BOOL)animated;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit24IMChatRoomViewController")
+@interface IMChatRoomViewController : UIObservableViewController
+@property (nonatomic, readonly) BOOL canBecomeFirstResponder;
+@property (nonatomic, readonly, strong) UIView * _Nullable inputAccessoryView;
+@property (nonatomic, readonly, strong) UIInputViewController * _Nullable inputViewController;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
+- (void)bottomButtonTapped;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+@interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
+- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+@class UIDocumentPickerViewController;
+
+@interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UIDocumentPickerDelegate>
+- (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
+- (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentAtURL:(NSURL * _Nonnull)url;
+- (void)documentPickerWasCancelled:(UIDocumentPickerViewController * _Nonnull)controller;
+@end
+
+
+@interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+@class UIScrollView;
+
+@interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)tableView:(UITableView * _Nonnull)tableView willDisplayCell:(UITableViewCell * _Nonnull)cell forRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (UIView * _Nullable)tableView:(UITableView * _Nonnull)tableView viewForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (void)scrollViewWillBeginDragging:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
+- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView * _Nonnull)scrollView;
 @end
 
 
@@ -521,6 +743,17 @@ SWIFT_CLASS("_TtC5IMKit30IMFileMessageSectionController")
 
 
 
+SWIFT_CLASS("_TtC5IMKit26IMFileMessageTableViewCell")
+@interface IMFileMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (void)handleProgressButtonTappedWithRecognizer:(UITapGestureRecognizer * _Nonnull)recognizer;
+- (void)bubbleViewDidTap;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
 SWIFT_CLASS("_TtC5IMKit26IMFileViewerViewController")
 @interface IMFileViewerViewController : QLPreviewController
 - (void)viewDidLoad;
@@ -577,10 +810,14 @@ SWIFT_CLASS("_TtC5IMKit34IMForwardingMessagesViewController")
 
 SWIFT_CLASS("_TtC5IMKit7IMImage")
 @interface IMImage : RealmSwiftObject
+@property (nonatomic, copy) NSString * _Nonnull id;
+@property (nonatomic) NSInteger width;
+@property (nonatomic) NSInteger height;
 @property (nonatomic, copy) NSData * _Nullable originImageData;
 @property (nonatomic, copy) NSData * _Nullable thumbnailImageData;
 + (NSArray<NSString *> * _Nonnull)ignoredProperties SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
++ (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -592,6 +829,24 @@ SWIFT_CLASS("_TtC5IMKit40IMImageCarouselTemplateSectionController")
 - (void)didUpdateToObject:(id _Nonnull)object;
 - (void)didSelectItemAtIndex:(NSInteger)index;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit36IMImageCarouselTemplateTableViewCell")
+@interface IMImageCarouselTemplateTableViewCell : IMMessageTableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMImageCarouselTemplateTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMImageCarouselTemplateTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -630,6 +885,17 @@ SWIFT_CLASS("_TtC5IMKit31IMImageMessageSectionController")
 
 
 
+SWIFT_CLASS("_TtC5IMKit27IMImageMessageTableViewCell")
+@interface IMImageMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (void)handleProgressButtonTappedWithRecognizer:(UITapGestureRecognizer * _Nonnull)recognizer;
+- (void)bubbleViewDidTap;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
 SWIFT_CLASS("_TtC5IMKit31IMImageViewerCollectionViewCell")
 @interface IMImageViewerCollectionViewCell : UICollectionViewCell
 - (void)layoutSubviews;
@@ -638,7 +904,6 @@ SWIFT_CLASS("_TtC5IMKit31IMImageViewerCollectionViewCell")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIScrollView;
 
 @interface IMImageViewerCollectionViewCell (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (UIView * _Nullable)viewForZoomingInScrollView:(UIScrollView * _Nonnull)scrollView SWIFT_WARN_UNUSED_RESULT;
@@ -657,10 +922,9 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
-
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
-- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
 @end
+
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
@@ -679,6 +943,77 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit33IMImagesMessageCollectionViewCell")
+@interface IMImagesMessageCollectionViewCell : UICollectionViewCell
+- (void)prepareForReuse;
+- (void)handleProgressButtonTappedWithRecognizer:(UITapGestureRecognizer * _Nonnull)recognizer;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+SWIFT_CLASS("_TtC5IMKit28IMImagesMessageTableViewCell")
+@interface IMImagesMessageTableViewCell : IMMessageTableViewCell
+- (void)bubbleViewDidLongPress;
+- (void)checkBoxButtonDidTap;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMImagesMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
+- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMImagesMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface IMImagesMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit20IMInputAccessoryView")
+@interface IMInputAccessoryView : UIView
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)sendButtonTapped;
+- (void)audioButtonTapped;
+- (void)imageButtonTapped;
+- (void)cameraButtonTapped;
+- (void)foldTextBar;
+- (void)addButtonTapped;
+- (void)stickerButtonTapped;
+- (void)sendImagesButtonTapped;
+- (void)dismissPhotoButtonTapped;
+@end
+
+
+@class UIImagePickerController;
+
+@interface IMInputAccessoryView (SWIFT_EXTENSION(IMKit)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+- (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> * _Nonnull)info;
+- (void)imagePickerControllerDidCancel:(UIImagePickerController * _Nonnull)picker;
+@end
+
+
+
+@interface IMInputAccessoryView (SWIFT_EXTENSION(IMKit)) <UITextViewDelegate>
+- (void)textViewDidChangeSelection:(UITextView * _Nonnull)textView;
+- (BOOL)textViewShouldBeginEditing:(UITextView * _Nonnull)textView SWIFT_WARN_UNUSED_RESULT;
+- (BOOL)textView:(UITextView * _Nonnull)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString * _Nonnull)text SWIFT_WARN_UNUSED_RESULT;
+- (void)textViewDidBeginEditing:(UITextView * _Nonnull)textView;
+- (void)textViewDidEndEditing:(UITextView * _Nonnull)textView;
+- (void)textViewDidChange:(UITextView * _Nonnull)textView;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit30IMInputAccessoryViewController")
 @interface IMInputAccessoryViewController : UIInputViewController
 - (void)viewDidLoad;
@@ -693,19 +1028,20 @@ SWIFT_CLASS("_TtC5IMKit30IMInputAccessoryViewController")
 - (void)mapButtonTapped;
 - (void)addButtonTapped;
 - (void)returnButtonTapped;
+- (void)sendImagesButtonTapped;
+- (void)dismissPhotoButtonTapped;
 - (void)foldTextBar;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-@class UIDocumentPickerViewController;
+
 
 @interface IMInputAccessoryViewController (SWIFT_EXTENSION(IMKit)) <UIDocumentPickerDelegate>
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentsAtURLs:(NSArray<NSURL *> * _Nonnull)urls;
 - (void)documentPicker:(UIDocumentPickerViewController * _Nonnull)controller didPickDocumentAtURL:(NSURL * _Nonnull)url;
 @end
 
-@class UIImagePickerController;
 
 @interface IMInputAccessoryViewController (SWIFT_EXTENSION(IMKit)) <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 - (void)imagePickerController:(UIImagePickerController * _Nonnull)picker didFinishPickingMediaWithInfo:(NSDictionary<UIImagePickerControllerInfoKey, id> * _Nonnull)info;
@@ -713,7 +1049,6 @@ SWIFT_CLASS("_TtC5IMKit30IMInputAccessoryViewController")
 @end
 
 
-@class UITextView;
 
 @interface IMInputAccessoryViewController (SWIFT_EXTENSION(IMKit)) <UITextViewDelegate>
 - (BOOL)textViewShouldBeginEditing:(UITextView * _Nonnull)textView SWIFT_WARN_UNUSED_RESULT;
@@ -768,6 +1103,15 @@ SWIFT_CLASS("_TtC5IMKit30IMLinkPreviewSectionController")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit26IMLinkPreviewTableViewCell")
+@interface IMLinkPreviewTableViewCell : UITableViewCell
+- (void)awakeFromNib;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit10IMLiteUser")
 @interface IMLiteUser : RealmSwiftObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull id;
@@ -784,6 +1128,15 @@ SWIFT_CLASS("_TtC5IMKit10IMLocation")
 @property (nonatomic, readonly) double longitude;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSArray<NSString *> * _Nonnull)ignoredProperties SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit30IMLocationMessageTableViewCell")
+@interface IMLocationMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (void)bubbleViewDidTap;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
@@ -824,25 +1177,27 @@ SWIFT_CLASS("_TtC5IMKit29IMMapMessageSectionController")
 SWIFT_CLASS("_TtC5IMKit19IMMapViewController")
 @interface IMMapViewController : UIViewController
 - (void)viewDidLoad;
+- (void)close;
+- (void)send;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class CLLocationManager;
+@class CLLocation;
+
+@interface IMMapViewController (SWIFT_EXTENSION(IMKit)) <CLLocationManagerDelegate>
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didUpdateLocations:(NSArray<CLLocation *> * _Nonnull)locations;
+- (void)locationManager:(CLLocationManager * _Nonnull)manager didFailWithError:(NSError * _Nonnull)error;
+@end
 
 @class MKMapView;
-@class MKUserLocation;
-@protocol MKAnnotation;
 @class MKAnnotationView;
-@class UIControl;
 
 @interface IMMapViewController (SWIFT_EXTENSION(IMKit)) <MKMapViewDelegate>
-- (void)mapView:(MKMapView * _Nonnull)mapView didUpdateUserLocation:(MKUserLocation * _Nonnull)userLocation;
-- (void)mapView:(MKMapView * _Nonnull)mapView didFailToLocateUserWithError:(NSError * _Nonnull)error;
 - (void)mapView:(MKMapView * _Nonnull)mapView regionWillChangeAnimated:(BOOL)animated;
 - (void)mapView:(MKMapView * _Nonnull)mapView regionDidChangeAnimated:(BOOL)animated;
-- (void)mapViewDidFinishRenderingMap:(MKMapView * _Nonnull)mapView fullyRendered:(BOOL)fullyRendered;
-- (MKAnnotationView * _Nullable)mapView:(MKMapView * _Nonnull)mapView viewForAnnotation:(id <MKAnnotation> _Nonnull)annotation SWIFT_WARN_UNUSED_RESULT;
-- (void)mapView:(MKMapView * _Nonnull)mapView annotationView:(MKAnnotationView * _Nonnull)view calloutAccessoryControlTapped:(UIControl * _Nonnull)control;
+- (void)mapView:(MKMapView * _Nonnull)mapView didSelectAnnotationView:(MKAnnotationView * _Nonnull)view;
 @end
 
 
@@ -852,6 +1207,35 @@ SWIFT_CLASS("_TtC5IMKit16IMMemberProperty")
 @property (nonatomic, readonly) NSInteger badgeNumber;
 @property (nonatomic, readonly, copy) NSString * _Nonnull lastReadMessageID;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit22IMMentionTableViewCell")
+@interface IMMentionTableViewCell : UITableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)prepareForReuse;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit19IMMentionsTableView")
+@interface IMMentionsTableView : UITableView
+- (nonnull instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)reloadData;
+@property (nonatomic, readonly) CGSize intrinsicContentSize;
+- (void)close;
+@end
+
+
+@interface IMMentionsTableView (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
+
+@interface IMMentionsTableView (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class IMSystemEvent;
@@ -868,7 +1252,6 @@ SWIFT_CLASS("_TtC5IMKit9IMMessage")
 @property (nonatomic, readonly, copy) NSString * _Nonnull senderID;
 @property (nonatomic, copy) NSString * _Nonnull senderNickname;
 @property (nonatomic, copy) NSString * _Nonnull senderAvatarString;
-@property (nonatomic, readonly, strong) IMImage * _Nullable image;
 @property (nonatomic, readonly, strong) IMFile * _Nullable file;
 @property (nonatomic, readonly, strong) IMSystemEvent * _Nullable systemEvent;
 @property (nonatomic, readonly, strong) IMLocation * _Nullable location;
@@ -901,19 +1284,17 @@ SWIFT_CLASS("_TtC5IMKit36IMMessageActionPopoverViewController")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+@end
+
 @class UIPresentationController;
 
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
 @end
 
-@class UITableView;
-
-@interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
-- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-@class UITableViewCell;
 
 @interface IMMessageActionPopoverViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
@@ -941,6 +1322,12 @@ SWIFT_CLASS("_TtC5IMKit30IMMessageActionsViewController")
 
 
 
+
+@interface IMMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UIPopoverPresentationControllerDelegate>
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit47IMMessagesSelectionInputAccessoryViewController")
 @interface IMMessagesSelectionInputAccessoryViewController : UIInputViewController
 - (void)viewDidLoad;
@@ -949,16 +1336,6 @@ SWIFT_CLASS("_TtC5IMKit47IMMessagesSelectionInputAccessoryViewController")
 - (void)viewDidLayoutSubviews;
 - (void)forwardButtonTapped;
 - (void)cancelButtonTapped;
-- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
-- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
-@end
-
-
-SWIFT_CLASS("_TtC5IMKit26UIObservableViewController")
-@interface UIObservableViewController : UIViewController
-- (void)viewWillAppear:(BOOL)animated;
-- (void)viewDidAppear:(BOOL)animated;
-- (void)viewDidDisappear:(BOOL)animated;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
@@ -1032,6 +1409,35 @@ SWIFT_CLASS("_TtC5IMKit14IMPaddingLabel")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit26IMPhotoInputViewController")
+@interface IMPhotoInputViewController : UIInputViewController
+- (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
+- (void)viewWillDisappear:(BOOL)animated;
+- (void)viewDidLayoutSubviews;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@class PHChange;
+
+@interface IMPhotoInputViewController (SWIFT_EXTENSION(IMKit)) <PHPhotoLibraryChangeObserver>
+- (void)photoLibraryDidChange:(PHChange * _Nonnull)changeInstance;
+@end
+
+
+@interface IMPhotoInputViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
+- (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMPhotoInputViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit13IMProgessView")
 @interface IMProgessView : UIView
 - (nonnull instancetype)initWithFrame:(CGRect)frame SWIFT_UNAVAILABLE;
@@ -1046,7 +1452,7 @@ SWIFT_CLASS("_TtC5IMKit16IMResponseObject")
 @property (nonatomic, readonly, copy) NSString * _Nonnull senderID;
 @property (nonatomic, readonly, copy) NSString * _Nonnull text;
 @property (nonatomic, readonly, copy) NSString * _Nullable stickerID;
-+ (NSArray<NSString *> * _Nonnull)ignoredProperties SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, copy) NSString * _Nullable imageString;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -1082,6 +1488,8 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly, copy) NSDate * _Nonnull hideTime;
 @property (nonatomic, readonly) BOOL isRemovedFromRoom;
 @property (nonatomic, readonly, copy) NSString * _Nonnull extParams;
+@property (nonatomic, copy) NSString * _Nullable draft;
+@property (nonatomic) BOOL isMentioned;
 @property (nonatomic, readonly, copy) NSString * _Nullable pref;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
@@ -1165,14 +1573,17 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)refreshControlPulled;
+- (void)folderButtonTapped;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class FloatingPanelController;
 
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
-- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
+- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 @protocol UIDragSession;
 @class UIDragItem;
@@ -1181,6 +1592,10 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (NSArray<UIDragItem *> * _Nonnull)tableView:(UITableView * _Nonnull)tableView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
+- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
 
 @class UISearchBar;
 
@@ -1211,7 +1626,6 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (void)tableView:(UITableView * _Nonnull)tableView didDeselectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 - (NSIndexPath * _Nullable)tableView:(UITableView * _Nonnull)tableView willSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (UISwipeActionsConfiguration * _Nullable)tableView:(UITableView * _Nonnull)tableView leadingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (UISwipeActionsConfiguration * _Nullable)tableView:(UITableView * _Nonnull)tableView trailingSwipeActionsConfigurationForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 - (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForFooterInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
@@ -1269,6 +1683,14 @@ SWIFT_CLASS("_TtC5IMKit33IMStickerMessageSectionController")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+
+
+SWIFT_CLASS("_TtC5IMKit29IMStickerMessageTableViewCell")
+@interface IMStickerMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
 
 
 SWIFT_CLASS("_TtC5IMKit20IMStickerPreviewView")
@@ -1338,6 +1760,56 @@ SWIFT_CLASS("_TtC5IMKit32IMSystemMessageSectionController")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit28IMSystemMessageTableViewCell")
+@interface IMSystemMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit5IMTag")
+@interface IMTag : RealmSwiftObject
+@property (nonatomic, copy) NSString * _Nonnull id;
+@property (nonatomic, copy) NSString * _Nonnull name;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit18IMTagTableViewCell")
+@interface IMTagTableViewCell : UITableViewCell
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)layoutSubviews;
+- (void)prepareForReuse;
+- (void)deleteButtonTapped;
+- (void)editButtonTapped;
+@end
+
+
+SWIFT_CLASS("_TtC5IMKit20IMTagsViewController")
+@interface IMTagsViewController : UIViewController
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+- (void)viewDidLoad;
+- (void)buttonTapped;
+- (void)closeButtonTapped;
+- (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
+@end
+
+
+@interface IMTagsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+@interface IMTagsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit28IMTemplateCollectionViewCell")
 @interface IMTemplateCollectionViewCell : UICollectionViewCell
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -1370,6 +1842,16 @@ SWIFT_CLASS("_TtC5IMKit29IMTemplateInputViewController")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit11IMTextField")
+@interface IMTextField : UITextField
+- (CGRect)textRectForBounds:(CGRect)forBounds SWIFT_WARN_UNUSED_RESULT;
+- (CGRect)editingRectForBounds:(CGRect)forBounds SWIFT_WARN_UNUSED_RESULT;
+- (CGRect)placeholderRectForBounds:(CGRect)forBounds SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit31IMTextMessageCollectionViewCell")
 @interface IMTextMessageCollectionViewCell : IMMessageCollectionViewCell
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
@@ -1394,6 +1876,13 @@ SWIFT_CLASS("_TtC5IMKit39IMTextMessageCollectionViewCellOutgoing")
 @end
 
 
+SWIFT_CLASS("_TtC5IMKit25IMTextMessageResponseView")
+@interface IMTextMessageResponseView : UIView
+- (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
 SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @interface IMTextMessageSectionController : IGListSectionController
 - (NSInteger)numberOfItems SWIFT_WARN_UNUSED_RESULT;
@@ -1405,11 +1894,37 @@ SWIFT_CLASS("_TtC5IMKit30IMTextMessageSectionController")
 @end
 
 
-
 @interface IMTextMessageSectionController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
 - (UIView * _Nullable)emptyViewForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+
+SWIFT_CLASS("_TtC5IMKit26IMTextMessageTableViewCell")
+@interface IMTextMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (void)responseViewDidTap;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface IMTextMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
+- (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+
+@interface IMTextMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMTextMessageTableViewCell (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
+- (CGFloat)tableView:(UITableView * _Nonnull)tableView heightForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+- (void)tableView:(UITableView * _Nonnull)tableView didSelectRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 
@@ -1563,6 +2078,19 @@ SWIFT_CLASS("_TtC5IMKit31IMVideoMessageSectionController")
 
 
 
+SWIFT_CLASS("_TtC5IMKit27IMVideoMessageTableViewCell")
+@interface IMVideoMessageTableViewCell : IMMessageTableViewCell
+- (void)prepareForReuse;
+- (void)handleProgressButtonTappedWithRecognizer:(UITapGestureRecognizer * _Nonnull)recognizer;
+- (void)bubbleViewDidTap;
+- (nonnull instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString * _Nullable)reuseIdentifier OBJC_DESIGNATED_INITIALIZER;
+- (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+
+
+
 
 SWIFT_CLASS("_TtC5IMKit12TriangleView")
 @interface TriangleView : UIView
@@ -1570,6 +2098,10 @@ SWIFT_CLASS("_TtC5IMKit12TriangleView")
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 - (void)drawRect:(CGRect)rect;
 @end
+
+
+
+
 
 
 
