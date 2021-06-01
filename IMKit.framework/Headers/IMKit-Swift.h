@@ -618,7 +618,6 @@ SWIFT_CLASS("_TtC5IMKit24IMChatRoomViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
-
 @class FloatingPanelController;
 
 @interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
@@ -629,6 +628,7 @@ SWIFT_CLASS("_TtC5IMKit24IMChatRoomViewController")
 @interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
 - (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 @end
+
 
 
 @interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
@@ -824,6 +824,7 @@ SWIFT_CLASS("_TtC5IMKit34IMForwardingMessagesViewController")
 SWIFT_CLASS("_TtC5IMKit7IMImage")
 @interface IMImage : RealmSwiftObject
 @property (nonatomic, copy) NSString * _Nonnull id;
+@property (nonatomic, copy) NSString * _Nonnull messageId;
 @property (nonatomic) NSInteger width;
 @property (nonatomic) NSInteger height;
 @property (nonatomic, copy) NSData * _Nullable originImageData;
@@ -919,29 +920,27 @@ SWIFT_CLASS("_TtC5IMKit27IMImageViewerViewController")
 - (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;
 @property (nonatomic, readonly) UIStatusBarStyle preferredStatusBarStyle;
+- (void)close;
+- (void)saveImage;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
 
-@interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
+@interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSourcePrefetching>
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView prefetchItemsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 @end
 
+
+
+@interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)scrollViewDidEndDecelerating:(UIScrollView * _Nonnull)scrollView;
+@end
 
 
 @interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
-@interface IMImageViewerViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegateFlowLayout>
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-- (UIEdgeInsets)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout insetForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (CGFloat)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (CGSize)collectionView:(UICollectionView * _Nonnull)collectionView layout:(UICollectionViewLayout * _Nonnull)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1562,7 +1561,6 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
-
 @interface IMRoomViewController (SWIFT_EXTENSION(IMKit)) <IGListAdapterDataSource>
 - (NSArray<id <IGListDiffable>> * _Nonnull)objectsForListAdapter:(IGListAdapter * _Nonnull)listAdapter SWIFT_WARN_UNUSED_RESULT;
 - (IGListSectionController * _Nonnull)listAdapter:(IGListAdapter * _Nonnull)listAdapter sectionControllerForObject:(id _Nonnull)object SWIFT_WARN_UNUSED_RESULT;
@@ -1570,21 +1568,20 @@ SWIFT_CLASS("_TtC5IMKit20IMRoomViewController")
 @end
 
 
+
 SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @interface IMRoomsViewController : UIObservableViewController
 - (void)viewDidLoad;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
+- (void)viewDidAppear:(BOOL)animated;
 - (void)refreshControlPulled;
 - (void)folderButtonTapped;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
 
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
-- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
-@end
 
 @protocol UIDragSession;
 @class UIDragItem;
@@ -1594,9 +1591,13 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @end
 
 
-
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
 - (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
+- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class UISearchBar;
@@ -1619,6 +1620,13 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 - (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
+- (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
+- (void)scrollViewWillEndDragging:(UIScrollView * _Nonnull)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(CGPoint * _Nonnull)targetContentOffset;
+- (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
 @end
 
 @class UISwipeActionsConfiguration;
@@ -1799,11 +1807,11 @@ SWIFT_CLASS("_TtC5IMKit20IMTagsViewController")
 @end
 
 
-
 @interface IMTagsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 @interface IMTagsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
