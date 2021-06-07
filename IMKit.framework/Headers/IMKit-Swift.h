@@ -613,6 +613,7 @@ SWIFT_CLASS("_TtC5IMKit24IMChatRoomViewController")
 @property (nonatomic, readonly, strong) UIInputViewController * _Nullable inputViewController;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)animated;
 - (void)viewDidLayoutSubviews;
 - (void)bottomButtonTapped;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
