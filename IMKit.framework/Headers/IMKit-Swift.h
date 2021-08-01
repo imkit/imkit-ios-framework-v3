@@ -620,16 +620,16 @@ SWIFT_CLASS("_TtC5IMKit24IMChatRoomViewController")
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil SWIFT_UNAVAILABLE;
 @end
 
-@class FloatingPanelController;
-
-@interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
-- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 
 @interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
 - (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
+@end
+
+@class FloatingPanelController;
+
+@interface IMChatRoomViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
+- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
 @end
 
 
@@ -1588,6 +1588,12 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @end
 
 
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
+- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSourcePrefetching>
 - (void)tableView:(UITableView * _Nonnull)tableView prefetchRowsAtIndexPaths:(NSArray<NSIndexPath *> * _Nonnull)indexPaths;
 @end
@@ -1598,12 +1604,6 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDragDelegate>
 - (NSArray<UIDragItem *> * _Nonnull)tableView:(UITableView * _Nonnull)tableView itemsForBeginningDragSession:(id <UIDragSession> _Nonnull)session atIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
-
-
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <FloatingPanelControllerDelegate>
-- (BOOL)floatingPanel:(FloatingPanelController * _Nonnull)fpc shouldRemoveAtLocation:(CGPoint)location withVelocity:(CGVector)velocity SWIFT_WARN_UNUSED_RESULT;
-@end
-
 
 @class UISearchBar;
 
@@ -1621,17 +1621,17 @@ SWIFT_CLASS("_TtC5IMKit21IMRoomsViewController")
 @end
 
 
-@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
-- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
-- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
-- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
-@end
-
-
 @interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView * _Nonnull)scrollView;
 - (void)scrollViewWillEndDragging:(UIScrollView * _Nonnull)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(CGPoint * _Nonnull)targetContentOffset;
 - (void)scrollViewDidEndDragging:(UIScrollView * _Nonnull)scrollView willDecelerate:(BOOL)decelerate;
+@end
+
+
+@interface IMRoomsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
+- (NSInteger)numberOfSectionsInTableView:(UITableView * _Nonnull)tableView SWIFT_WARN_UNUSED_RESULT;
+- (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
+- (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
 
 @class UISwipeActionsConfiguration;
@@ -1812,11 +1812,11 @@ SWIFT_CLASS("_TtC5IMKit20IMTagsViewController")
 @end
 
 
-
 @interface IMTagsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDataSource>
 - (NSInteger)tableView:(UITableView * _Nonnull)tableView numberOfRowsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UITableViewCell * _Nonnull)tableView:(UITableView * _Nonnull)tableView cellForRowAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
 @end
+
 
 
 @interface IMTagsViewController (SWIFT_EXTENSION(IMKit)) <UITableViewDelegate>
