@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IMKit'
-  s.version          = '0.341.0'
+  s.version          = '0.342.0'
   s.summary          = 'IMKit Framework'
 
 # This description is used to generate tags and improve search results.
@@ -20,28 +20,11 @@ Pod::Spec.new do |s|
   s.description      = 'A light-weight chat solution for mobile apps and websites.'
 
   s.homepage         = 'https://github.com/imkit/imkit-ios-framework-v3'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = 'MIT'
   s.author           = { 'Howard Sun' => 'howard@funtek.co' }
   s.source           = { :git => 'https://github.com/imkit/imkit-ios-framework-v3.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
   s.ios.deployment_target = '11.0'
-
-  # s.source_files = 'IMKit/Classes/**/*'
-  # s.resources = 'IMKit/Assets/Assets.xcassets'
-  s.vendored_frameworks = 'IMKit.framework'
-  s.ios.vendored_frameworks = 'IMKit.framework'
-  # s.resources     = 'IMKit.framework/*.xib', 'IMKit.framework/*.nib', 'IMKit.framework/Assets.car', 'Assets.xcassets'
-  # s.ios.resource_bundle = { 'IMKit' =>  ['IMKit.framework/*.xib', 'IMKit.framework/*.nib', 'IMKit.framework/Assets.car', 'Assets.xcassets'] }
-  s.requires_arc  = true
-
-  # s.resource_bundles = {
-  #   'IMKit' => ['IMKit/Assets/Assets.xcassets']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  s.frameworks = 'UIKit'
+  s.ios.vendored_frameworks = 'IMKit.xcframework'
 
   s.dependency 'IGListKit', '~> 4.0.0'
   s.dependency 'PromiseKit', '~> 6.15.3'
