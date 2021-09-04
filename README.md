@@ -15,9 +15,9 @@ IMKit is a live chat platform solution, more detail please visit: https://imkit.
 
 ## Requirements
 
-- iOS 10.0+
-- Xcode 10.1+
-- Swift 4.2+
+- iOS 13.0+
+- Xcode 12.5+
+- Swift 5.4
 
 ## Installation
 
