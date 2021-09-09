@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		DLFGARiG6ccqREWLp8FpZIWjldc=
+		WIFQAtKwWZ6TGV+qG5qdv9Xlm6k=
 		</data>
 		<key>Headers/IMKit-Swift.h</key>
 		<data>
@@ -18,39 +18,47 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		TRnczq4fcaKlXjflRfki7q9Fdug=
+		2q6KAMXQjHpHVD56ufG6ZDRjUg0=
 		</data>
 		<key>Modules/IMKit.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		og9M2YBph/P1IrdBS4AdmH0qOMQ=
+		Z5gIy3fcy2v0cwu4lhGTsRsJbCY=
 		</data>
 		<key>Modules/IMKit.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<data>
-		og9M2YBph/P1IrdBS4AdmH0qOMQ=
+		Z5gIy3fcy2v0cwu4lhGTsRsJbCY=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		ZfanCgXTm1D5r6On5BdrrtkA6QM=
+		Xwl8Apjx1vsskP+/LJE6WYPBf1c=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		SQ2BIRI1Y5z5tO7RafNHw7wJLEo=
+		3fkvWFFqlYB1YFOXIFkbZWjdQb8=
+		</data>
+		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface-e</key>
+		<data>
+		O7XEEr3dvRV9Kg2ZgmdlOjBnwao=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		2A4YJ8jPYNYSvcOOfCfK1NLFgPU=
+		4EUxuy6pq/G422sJ9Tmxw3UZIqo=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64.swiftdoc</key>
 		<data>
-		ZfanCgXTm1D5r6On5BdrrtkA6QM=
+		Xwl8Apjx1vsskP+/LJE6WYPBf1c=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		SQ2BIRI1Y5z5tO7RafNHw7wJLEo=
+		3fkvWFFqlYB1YFOXIFkbZWjdQb8=
+		</data>
+		<key>Modules/IMKit.swiftmodule/x86_64.swiftinterface-e</key>
+		<data>
+		O7XEEr3dvRV9Kg2ZgmdlOjBnwao=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		2A4YJ8jPYNYSvcOOfCfK1NLFgPU=
+		4EUxuy6pq/G422sJ9Tmxw3UZIqo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -171,7 +179,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Hv7kEd8Oky0+Zg2O4w3KfO0HXXif7mBQgNjiXUs7of8=
+			akVWOcNKT5OQlHFQcD3ZYa3q8DOEZy5Q9xafWn+hx6M=
 			</data>
 		</dict>
 		<key>Headers/IMKit-Swift.h</key>
@@ -192,56 +200,70 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			GHVTe3+NIUDWhbu2vLAv2yPmS5j7B0Jj8hiwUVsps8Y=
+			FH0MPuSnvSpHqBZ+AsPmECnfyKeque3TIbsqW5o9Z58=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GHVTe3+NIUDWhbu2vLAv2yPmS5j7B0Jj8hiwUVsps8Y=
+			FH0MPuSnvSpHqBZ+AsPmECnfyKeque3TIbsqW5o9Z58=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aucWMcTubJ0TYehYdrxwAZYhR+6CKEqxjDK9aQj36KM=
+			+WiajdmxL6YItcB6z3hMqx/hgxID4Q1XHXDvSToHL7o=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F8sojXUVa+erqPUF8knlGtgzksYLJ/COq9wCx8rkAJk=
+			IhIEJWMB2g8N0KjR5p6nmx9B7xZSOi4iVijwOVBFdGI=
+			</data>
+		</dict>
+		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface-e</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9ao8OmKcVlsakoLxF+/SUtB/U9sQwB+0O1j04XAQfyM=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kYuYcv9CN7xUV9JIO7khU6I3wvVPVBPbY4eDYKqzot8=
+			UaG/m/Wa79Cl2EvWOCCv9LSp89hnfMJAv2qOY4kx7N4=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aucWMcTubJ0TYehYdrxwAZYhR+6CKEqxjDK9aQj36KM=
+			+WiajdmxL6YItcB6z3hMqx/hgxID4Q1XHXDvSToHL7o=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			F8sojXUVa+erqPUF8knlGtgzksYLJ/COq9wCx8rkAJk=
+			IhIEJWMB2g8N0KjR5p6nmx9B7xZSOi4iVijwOVBFdGI=
+			</data>
+		</dict>
+		<key>Modules/IMKit.swiftmodule/x86_64.swiftinterface-e</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			9ao8OmKcVlsakoLxF+/SUtB/U9sQwB+0O1j04XAQfyM=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			kYuYcv9CN7xUV9JIO7khU6I3wvVPVBPbY4eDYKqzot8=
+			UaG/m/Wa79Cl2EvWOCCv9LSp89hnfMJAv2qOY4kx7N4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
