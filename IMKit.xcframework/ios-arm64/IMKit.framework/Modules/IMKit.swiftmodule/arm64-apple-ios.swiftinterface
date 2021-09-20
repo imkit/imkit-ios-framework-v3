@@ -5686,6 +5686,10 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
     get
     set(value)
   }
+  open var fixedTopView: UIKit.UIView? {
+    get
+    set(value)
+  }
   final public let roomID: Swift.String
   public init(roomID: Swift.String)
   @objc required dynamic public init?(coder: Foundation.NSCoder)
