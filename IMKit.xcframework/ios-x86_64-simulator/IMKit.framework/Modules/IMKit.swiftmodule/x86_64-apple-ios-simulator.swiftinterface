@@ -1693,7 +1693,6 @@ public struct IMKit {
   public static var unsendableMessageTypes: [IMMessageType]
   public static var editableMessageTypes: [IMMessageType]
   public static var reportableMessageTypes: [IMMessageType]
-  public static var utilities: [IMUtilityType]
   public static var maximumFileSizeLimitInMB: Swift.UInt {
     get
     set(value)
@@ -3657,21 +3656,15 @@ extension IMRoomSearchingViewController : UIKit.UITableViewDelegate {
   @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @objc deinit
 }
-public enum IMUtilityType : Swift.CaseIterable {
-  case Location
-  case File
-  case Translation
-  public static func == (a: IMUtilityType, b: IMUtilityType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public typealias AllCases = [IMUtilityType]
-  public static var allCases: [IMUtilityType] {
-    get
-  }
-  public var hashValue: Swift.Int {
-    get
-  }
+public enum IMUtilityType : Swift.Equatable {
+  case location
+  case file
+  case translation
+  case custom(image: UIKit.UIImage?, title: Swift.String?, handler: (() -> Swift.Void))
+  public static func == (lhs: IMUtilityType, rhs: IMUtilityType) -> Swift.Bool
 }
 @objc @_inheritsConvenienceInitializers open class IMUtilityInputViewController : UIKit.UIInputViewController {
+  public static var utilities: [IMUtilityType]
   weak public var viewController: UIKit.UIViewController?
   @objc override dynamic open func viewDidLoad()
   @objc override dynamic open func viewDidLayoutSubviews()
@@ -5602,6 +5595,7 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
 }
 @objc open class IMChatRoomViewController : UIObservableViewController {
   final public let viewModel: IMChatRoomViewModel
+  public static var showRoomInfoButton: Swift.Bool
   open var stickerPreviewViewBottomConstraint: SnapKit.Constraint?
   open var stickerPreviewView: IMStickerPreviewView {
     get
