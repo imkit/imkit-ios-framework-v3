@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
-// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name IMKit
+// swift-module-flags: -target x86_64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IMKit
 import AVFoundation
 import AVKit
 import ActiveLabel
@@ -31,6 +31,7 @@ import Realm
 import RealmSwift
 import SnapKit
 import SocketIO
+import Stipop
 import Swift
 import SwiftLinkPreview
 import SwiftyJSON
@@ -53,11 +54,11 @@ extension IMAudioMessageSectionController : IMMessageCellDelegate {
   @_Concurrency.MainActor(unsafe) public static var collectionViewContentInsets: UIKit.UIEdgeInsets
   @_Concurrency.MainActor(unsafe) open var tapGestureRecogniser: UIKit.UITapGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -79,25 +80,25 @@ extension IMCarouselTemplateCollectionViewCell : UIKit.UICollectionViewDataSourc
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMCarouselTemplateColumnCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageHeightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textLabelTopConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var line: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var buttons: [UIKit.UIButton] {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var buttonsHeightConstraints: [SnapKit.Constraint]
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -106,7 +107,7 @@ extension IMCarouselTemplateCollectionViewCell : UIKit.UICollectionViewDataSourc
   @_Concurrency.MainActor(unsafe) open var extra: SwiftyJSON.JSON?
   @_Concurrency.MainActor(unsafe) open var column: SwiftyJSON.JSON? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open func updateUI()
   @objc @_Concurrency.MainActor(unsafe) open func buttonTapped(_ button: UIKit.UIButton)
@@ -164,25 +165,25 @@ final public class IMAcceptInvitationTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMButtonsTemplateTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var mainImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageHeightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var contentLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var contentLabelTopConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var line: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var buttons: [UIKit.UIButton] {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var buttonsHeightConstraints: [SnapKit.Constraint]
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
@@ -208,7 +209,7 @@ final public class IMFetchInvitationsTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class IMSystemMessageCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) weak final public var message: IMMessage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public func prepareForReuse()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -240,7 +241,7 @@ extension IMRoomsManagerDelegate {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class IMRoomsManager {
-  public static var shared: IMRoomsManager
+  public static let shared: IMRoomsManager
   public static var deleteRoomsIfUserWasRemovedFrom: Swift.Bool
   final public var listOfdeletingRoomID: [Swift.String]
   final public var numberOfRoomsPerRequest: Swift.Int
@@ -291,19 +292,19 @@ final public class IMUnsubscribeTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public var backgroundColor: UIKit.UIColor? {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) public var labels: [UIKit.UILabel] {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var users: [(url: Foundation.URL?, name: Swift.String?)] {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var image: UIKit.UIImage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -386,19 +387,19 @@ final public class IMFetchRoomInvitationsTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMRoomGroupTableViewCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor(unsafe) open var indicatorImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var roomGroup: IMRoomGroup? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -408,37 +409,37 @@ final public class IMFetchRoomInvitationsTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMImageViewerViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var headerView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var closeButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var downloadButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var senderLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var timeLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var completeView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var selectedImage: IMImage?
   @_Concurrency.MainActor(unsafe) open var images: [IMImage]
   @_Concurrency.MainActor(unsafe) open var dateFormatter: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewSafeAreaInsetsDidChange()
@@ -485,7 +486,7 @@ public protocol NetworkClientType {
   public static var serverTrustManager: Alamofire.ServerTrustManager?
   public static var requestInterceptor: Alamofire.RequestInterceptor?
   public var isEnabled: Swift.Bool
-  public static var shared: IMSession
+  public static let shared: IMSession
   override public init(session: Foundation.URLSession, delegate: Alamofire.SessionDelegate, rootQueue: Dispatch.DispatchQueue, startRequestsImmediately: Swift.Bool = super, requestQueue: Dispatch.DispatchQueue? = nil, serializationQueue: Dispatch.DispatchQueue? = nil, interceptor: Alamofire.RequestInterceptor? = nil, serverTrustManager: Alamofire.ServerTrustManager? = nil, redirectHandler: Alamofire.RedirectHandler? = nil, cachedResponseHandler: Alamofire.CachedResponseHandler? = nil, eventMonitors: [Alamofire.EventMonitor] = super)
   @objc deinit
 }
@@ -501,32 +502,32 @@ public struct NetworkClient : NetworkClientType {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMAudioMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var playerBution: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var loadingIndicator: UIKit.UIActivityIndicatorView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var countdownLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioPlayer: IMAudioPlayer? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var currentTimeInterval: Swift.Int {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isProgressViewInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var progressView: IMProgessView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var cancelButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func removeFromSuperview()
@@ -579,7 +580,7 @@ public protocol IMMentionsTableViewDelegate : AnyObject {
   public typealias Style = IMStyle.messages.inputAccessory.mentions
   @_Concurrency.MainActor(unsafe) open var closeButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var keyword: Swift.String
   @_Concurrency.MainActor(unsafe) open var users: [IMUser]
@@ -606,15 +607,15 @@ extension IMMentionsTableView : UIKit.UITableViewDataSource {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMentionTableViewCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor(unsafe) weak open var user: IMUser? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -627,34 +628,34 @@ extension IMMentionsTableView : UIKit.UITableViewDataSource {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) open var verticalLine: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var previewImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var labelBox: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var labelBoxRightConstraint: SnapKit.Constraint?
   @available(iOS 13.0, *)
   @_Concurrency.MainActor(unsafe) open var metadataProvider: LinkPresentation.LPMetadataProvider {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isMetadataProviderRequesting: Swift.Bool
   @_Concurrency.MainActor(unsafe) weak open var linkPreview: IMLinkPreview? {
     get
-    set(value)
+    set
   }
   @objc override dynamic open func awakeFromNib()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
@@ -667,7 +668,7 @@ extension IMMentionsTableView : UIKit.UITableViewDataSource {
   @objc deinit
 }
 final public class IMDownloadFileTask : NetworkRequest {
-  public static var downloadDirectory: Foundation.URL
+  public static let downloadDirectory: Foundation.URL
   public typealias ResponseType = Foundation.URL
   public init()
   final public var endpoint: Swift.String {
@@ -716,7 +717,7 @@ open class IMRoomsViewModel {
   public var sections: [DifferenceKit.ArraySection<DifferenceKit.AnyDifferentiable, DifferenceKit.AnyDifferentiable>]
   public var sectionsInput: [DifferenceKit.ArraySection<DifferenceKit.AnyDifferentiable, DifferenceKit.AnyDifferentiable>] {
     get
-    set(newValue)
+    set
   }
   public var expandedGroupIDs: [Swift.String]
   public var roomPredicate: Foundation.NSPredicate?
@@ -790,7 +791,7 @@ final public class IMCreateDirectChatTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class IMTypingCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) final public var text: Swift.String? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -803,58 +804,58 @@ public protocol IMMessageTableViewCellDelegate : AnyObject {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMessageTableViewCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor(unsafe) open var bubbleView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var bubbleViewTopConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var bubbleViewBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var bubbleViewMaxWidthConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var tapGestureRecognizer: UIKit.UITapGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var longPressGestureRecognizer: UIKit.UILongPressGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var nameLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var nameLabelTopConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var timeLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var readReceiptLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var dateFormatter: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var avatarViewLeftConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var checkBoxButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCheckboxInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var sendingIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isRetrybuttonInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var retryButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var message: IMMessage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var delegate: IMMessageTableViewCellDelegate?
   @_Concurrency.MainActor(unsafe) weak open var viewController: UIKit.UIViewController?
@@ -883,39 +884,39 @@ extension IMMessageTableViewCell : UIKit.UIPopoverPresentationControllerDelegate
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMAddTagViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) open var nameTextField: IMTextField {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var containerView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stackView1: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stackView2: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var separator: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var currentColorView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var colorTextField: IMTextField {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var button: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var color: [Swift.String]
   @_Concurrency.MainActor(unsafe) open var isValidated: Swift.Bool {
@@ -957,7 +958,7 @@ extension IMAddTagViewController : UIKit.UITextFieldDelegate {
   final public var imageURL: Foundation.URL? {
     get
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
   public init(id: Swift.String, senderID: Swift.String, text: Swift.String, imageURL: Foundation.URL? = nil, stickerID: Swift.String? = nil)
   final public func copy() -> IMResponseObject
@@ -977,38 +978,38 @@ extension IMAddTagViewController : UIKit.UITextFieldDelegate {
   @_Concurrency.MainActor(unsafe) public var searchBarStatus: IMRoomsViewController.SearchBarStatus
   @_Concurrency.MainActor(unsafe) open var searchBarContainer: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var topStackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var searchBar: UIKit.UISearchBar {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var refreshControl: UIKit.UIRefreshControl {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var emptyView: UIKit.UIView?
   @_Concurrency.MainActor(unsafe) open var folderButtonRightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var folderButtonBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var folderButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var viewModel: IMRoomsViewModel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var floatingPanelController: FloatingPanel.FloatingPanelController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public static var leftActions: [IMRoomAction]
   @_Concurrency.MainActor(unsafe) public static var rightActions: [IMRoomAction]
@@ -1102,7 +1103,7 @@ public protocol IMNetworkReachabilityManagerDelegate : AnyObject {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class IMNetworkReachabilityManager {
-  public static var shared: IMNetworkReachabilityManager
+  public static let shared: IMNetworkReachabilityManager
   final public func startNotify(delegate: IMNetworkReachabilityManagerDelegate)
   final public func stopNotify(delegate: IMNetworkReachabilityManagerDelegate)
   @objc deinit
@@ -1125,23 +1126,23 @@ final public class IMSubscribeTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMChatRoomTableViewHeaderView : UIKit.UITableViewHeaderFooterView {
   @_Concurrency.MainActor(unsafe) open var containerView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var dateFormatterWithYear: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var dateFormatterWithoutYear: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var date: Foundation.Date? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -1174,32 +1175,32 @@ final public class IMSubscribeTask : NetworkRequest {
   public typealias Style = IMStyle.messages.inputAccessory.response
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stakeViewRightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var stackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var namelabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textlabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var closeButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var responseObject: IMResponseObject? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) open var onDismiss: (() -> Swift.Void)?
@@ -1227,7 +1228,7 @@ final public class IMAddMembersTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMessageActionsViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var actions: [IMMessageAction]
   @_Concurrency.MainActor(unsafe) weak open var message: IMMessage?
@@ -1248,11 +1249,11 @@ extension IMMessageActionsViewController : UIKit.UICollectionViewDataSource {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMessageActionCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var action: IMMessageAction? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -1265,15 +1266,15 @@ extension IMMessageActionsViewController : UIKit.UICollectionViewDataSource {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) final public var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public var isHighlighted: Swift.Bool {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) final public var stickerID: Swift.String? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -1287,7 +1288,7 @@ extension IMMessageActionsViewController : UIKit.UICollectionViewDataSource {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMImagesMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) override open func updateUI()
@@ -1310,26 +1311,26 @@ extension IMImagesMessageTableViewCell : UIKit.UICollectionViewDelegateFlowLayou
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMImagesMessageCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCircularProgressButtonInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var circularProgressButton: IMCircularProgressButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var darkView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var checkBoxButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCheckboxInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) weak open var message: IMMessage?
   @_Concurrency.MainActor(unsafe) open var image: IMImage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) open func updateUI()
@@ -1375,28 +1376,28 @@ extension IGListKit.ListSectionController {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var nameLabelRightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var namelabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textlabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var separator: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var responseObject: IMResponseObject? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -1442,72 +1443,72 @@ public enum IMRoomAction : Swift.String, Swift.CaseIterable {
   @_Concurrency.MainActor(unsafe) weak public var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) open var folderIndicatorView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var avatarViewLeftConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var pinIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleStackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var muteIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var muteIndicatorContainerView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var mentionLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var tagListView: TagListView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var timeLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var numberOfUnreadLabel: IMPaddingLabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var separator: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var dateFormatter: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var room: IMRoom? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var invitation: IMInvitation? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -1638,7 +1639,7 @@ public enum IMSocketEventType : Swift.String {
   }
   public enum Constant {
   }
-  public static var shared: IMSocketManager
+  public static let shared: IMSocketManager
   final public var isEnabled: Swift.Bool
   final public var isAuthV1: Swift.Bool
   final public var status: Swift.String {
@@ -1695,11 +1696,11 @@ public struct IMKit {
   public static var reportableMessageTypes: [IMMessageType]
   public static var maximumFileSizeLimitInMB: Swift.UInt {
     get
-    set(value)
+    set
   }
   public static var applicationGroupIdentifier: Swift.String {
     get
-    set(value)
+    set
   }
   public static var realmConfig: RealmSwift.Realm.Configuration
   public static var realm: RealmSwift.Realm {
@@ -1717,7 +1718,7 @@ public struct IMKit {
   public static func connect(uid: Swift.String, token: Swift.String? = nil) -> PromiseKit.Promise<IMUser>
 }
 extension Foundation.NSNotification.Name {
-  public static var NumberOfUnreadMessagesDidChange: Foundation.Notification.Name
+  public static let NumberOfUnreadMessagesDidChange: Foundation.Notification.Name
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class IMProgessView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) public func setProgress(_ progress: Swift.Float, animated: Swift.Bool)
@@ -1757,7 +1758,7 @@ extension IMStickerMessageSectionController : IMMessageCellDelegate {
   @objc dynamic final public var duration: Swift.Int
   final public var url: Foundation.URL? {
     get
-    set(value)
+    set
   }
   final public var localPath: Foundation.URL? {
     get
@@ -1770,7 +1771,7 @@ extension IMStickerMessageSectionController : IMMessageCellDelegate {
     get
   }
   @objc override public static func ignoredProperties() -> [Swift.String]
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(data: Foundation.Data, name: Swift.String? = nil, mimeType: Swift.String? = nil, fileExtension: Swift.String? = nil, bytes: Swift.Int? = nil, duration: Swift.Int? = nil, originalPath: Foundation.URL? = nil)
   public init(urlString: Swift.String, name: Swift.String? = nil, mimeType: Swift.String? = nil, fileExtension: Swift.String? = nil, bytes: Swift.Int? = nil, duration: Swift.Int? = nil)
   final public func copy() -> IMFile
@@ -1780,11 +1781,11 @@ extension IMStickerMessageSectionController : IMMessageCellDelegate {
 @objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class IMTagsViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var button: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var roomId: Swift.String
   @_Concurrency.MainActor(unsafe) open var tags: [IMTag]
@@ -1819,28 +1820,28 @@ public protocol IMTagTableViewCellDelegate : AnyObject {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMTagTableViewCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor(unsafe) open var tagColorImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var deleteButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var editButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var dottedLineLayer: QuartzCore.CAShapeLayer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var delegate: IMTagTableViewCellDelegate?
   @_Concurrency.MainActor(unsafe) open var mainTag: IMTag? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -1868,7 +1869,7 @@ final public class IMFetchRoomGroupsTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) weak final public var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) final public var stickerSet: IMStickerSet? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public func prepareForReuse()
   @_Concurrency.MainActor(unsafe) final public func invalidateLayout()
@@ -1940,9 +1941,9 @@ final public class IMFetchTokenTask : NetworkRequest {
   }
   public var avatarURL: Foundation.URL? {
     get
-    set(value)
+    set
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
   public init(id: Swift.String, nickname: Swift.String? = nil, avatarString: Swift.String = "")
   @objc override public static func ignoredProperties() -> [Swift.String]
@@ -1962,14 +1963,14 @@ final public class IMFetchTokenTask : NetworkRequest {
   }
   final public var avatarURL: Foundation.URL? {
     get
-    set(value)
+    set
   }
   final public var displayName: Swift.String {
     get
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
-  public convenience init(from dict: [Swift.String : Any])
+  convenience public init(from dict: [Swift.String : Any])
   public init(id: Swift.String, nickname: Swift.String? = nil, avatarString: Swift.String? = nil)
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
@@ -1982,20 +1983,20 @@ final public class IMFetchTokenTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) open var padding: CoreGraphics.CGFloat
   @_Concurrency.MainActor(unsafe) open var forwardButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var cancelButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var line: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) public var numberOfSelectedMessages: Swift.Int {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
@@ -2112,7 +2113,7 @@ public enum IMMessageGroupPosition : Swift.Equatable {
   }
   final public var status: IMMessageStatus {
     get
-    set(newValue)
+    set
   }
   final public var isSyncedWithLocalData: Swift.Bool {
     get
@@ -2126,9 +2127,9 @@ public enum IMMessageGroupPosition : Swift.Equatable {
   final public var parameters: [Swift.String : Any] {
     get
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
-  public convenience init(from dict: [Swift.String : Any])
+  convenience public init(from dict: [Swift.String : Any])
   public init(roomID: Swift.String, text: Swift.String, senderID: Swift.String, responseObject: IMResponseObject? = nil, hiddenURL: Foundation.URL? = nil, mentions: [Swift.String] = [])
   public init(roomID: Swift.String, images: [UIKit.UIImage], senderID: Swift.String)
   public init(roomID: Swift.String, assets: [Photos.PHAsset], senderID: Swift.String)
@@ -2184,7 +2185,7 @@ final public class IMFetchMessagesTask : NetworkRequest {
   open var color: UIKit.UIColor {
     get
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(name: Swift.String, hexColorCode: Swift.String?)
   public func copy() -> IMTag
   @objc deinit
@@ -2202,7 +2203,7 @@ final public class IMFetchMessagesTask : NetworkRequest {
   final public var lastReadMessageCreateTime: Foundation.Date? {
     get
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
   @objc deinit
   public init(from decoder: Swift.Decoder) throws
@@ -2299,7 +2300,7 @@ public enum IMRoomType : Swift.String {
   final public var value: [Swift.String : Any] {
     get
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public static var customizedLastMessage: ((IMRoom, IMMessage) -> Swift.String?)?
   public static var customizedRoomName: ((IMRoom) -> Swift.String?)?
   public static var noMember: Swift.String {
@@ -2360,7 +2361,7 @@ final public class IMUnmuteRoomTask : NetworkRequest {
     get
   }
   public init(from json: SwiftyJSON.JSON)
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   public static var customizedLastMessage: ((IMInvitation) -> Swift.String?)?
   @objc override public static func primaryKey() -> Swift.String?
   final public var differenceIdentifier: Swift.String {
@@ -2375,7 +2376,7 @@ final public class IMUnmuteRoomTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class IMDateCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) final public var date: IMDate? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -2458,15 +2459,15 @@ extension IMMapMessageSectionController : IMMessageCellDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class IMStickerTabCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) final public var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) final public var stickerID: Swift.String? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) final public var isTabSelected: Swift.Bool {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public func prepareForReuse()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -2492,11 +2493,11 @@ public enum IMSystemEventType {
   final public let members: RealmSwift.List<IMLiteUser>
   final public var type: IMSystemEventType {
     get
-    set(value)
+    set
   }
   @objc override public static func ignoredProperties() -> [Swift.String]
   public init(systemEventType: Swift.String, members: [IMLiteUser] = [])
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   final public func copy() -> IMSystemEvent
   @objc deinit
 }
@@ -2524,7 +2525,7 @@ public struct IMTemplate {
   @_Concurrency.MainActor(unsafe) weak open var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
@@ -2546,22 +2547,22 @@ extension IMTemplateInputViewController : UIKit.UICollectionViewDelegateFlowLayo
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMTemplateCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var messageLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var separator: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) open func setupUI()
   @_Concurrency.MainActor(unsafe) open var template: IMTemplate? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open func updateUI()
   @objc deinit
@@ -2598,7 +2599,7 @@ open class IMChatRoomViewModel {
   open var sections: [[IMMessage]]
   open var state: ViewModelState {
     get
-    set(value)
+    set
   }
   open var isViewpointKeptAtBottom: Swift.Bool
   public init(roomID: Swift.String)
@@ -2667,7 +2668,7 @@ extension IMAudioMessageCollectionViewCell : IMAudioPlayerDelegate {
   final public var asset: Photos.PHAsset?
   final public var size: CoreGraphics.CGSize {
     get
-    set(value)
+    set
   }
   final public var originURL: Foundation.URL? {
     get
@@ -2677,7 +2678,7 @@ extension IMAudioMessageCollectionViewCell : IMAudioPlayerDelegate {
   }
   final public func fetchImage() -> PromiseKit.Promise<UIKit.UIImage?>
   @objc override public static func ignoredProperties() -> [Swift.String]
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   @objc override public static func primaryKey() -> Swift.String?
   public init(json: SwiftyJSON.JSON)
   public init(originImageString: Swift.String, thumbnailImageString: Swift.String, width: Swift.Int, height: Swift.Int)
@@ -3147,6 +3148,19 @@ extension IMRoomSearchingViewController : UIKit.UITableViewDelegate {
       }
       @objc deinit
     }
+    @_hasMissingDesignatedInitializers public class sticker {
+      public enum StickerType {
+        case stipop
+        case funFunFamily
+        public static func == (a: IMStyle.messages.sticker.StickerType, b: IMStyle.messages.sticker.StickerType) -> Swift.Bool
+        public func hash(into hasher: inout Swift.Hasher)
+        public var hashValue: Swift.Int {
+          get
+        }
+      }
+      public static var stickerType: IMStyle.messages.sticker.StickerType
+      @objc deinit
+    }
     @_hasMissingDesignatedInitializers public class stickerPreview {
       public static var height: CoreGraphics.CGFloat
       public static var topInset: CoreGraphics.CGFloat
@@ -3279,328 +3293,328 @@ extension IMRoomSearchingViewController : UIKit.UITableViewDelegate {
 }
 @objc @_inheritsConvenienceInitializers open class Color : UIKit.UIColor {
   @_hasMissingDesignatedInitializers open class darkText {
-    public static var primary: UIKit.UIColor
-    public static var secondary: UIKit.UIColor
-    public static var others: UIKit.UIColor
-    public static var dividers: UIKit.UIColor
+    public static let primary: UIKit.UIColor
+    public static let secondary: UIKit.UIColor
+    public static let others: UIKit.UIColor
+    public static let dividers: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class lightText {
-    public static var primary: UIKit.UIColor
-    public static var secondary: UIKit.UIColor
-    public static var others: UIKit.UIColor
-    public static var dividers: UIKit.UIColor
+    public static let primary: UIKit.UIColor
+    public static let secondary: UIKit.UIColor
+    public static let others: UIKit.UIColor
+    public static let dividers: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class red : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class pink : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class purple : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class deepPurple : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class indigo : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class blue : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class lightBlue : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class cyan : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class teal : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class green : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class lightGreen : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class lime : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class yellow : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class amber : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class orange : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class deepOrange : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
-    @objc public static var accent1: UIKit.UIColor
-    @objc public static var accent2: UIKit.UIColor
-    @objc public static var accent3: UIKit.UIColor
-    @objc public static var accent4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
+    @objc public static let accent1: UIKit.UIColor
+    @objc public static let accent2: UIKit.UIColor
+    @objc public static let accent3: UIKit.UIColor
+    @objc public static let accent4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class brown : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class grey : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
     @objc deinit
   }
   @_hasMissingDesignatedInitializers open class blueGrey : ColorPalette {
-    @objc public static var lighten5: UIKit.UIColor
-    @objc public static var lighten4: UIKit.UIColor
-    @objc public static var lighten3: UIKit.UIColor
-    @objc public static var lighten2: UIKit.UIColor
-    @objc public static var lighten1: UIKit.UIColor
-    @objc public static var base: UIKit.UIColor
-    @objc public static var darken1: UIKit.UIColor
-    @objc public static var darken2: UIKit.UIColor
-    @objc public static var darken3: UIKit.UIColor
-    @objc public static var darken4: UIKit.UIColor
+    @objc public static let lighten5: UIKit.UIColor
+    @objc public static let lighten4: UIKit.UIColor
+    @objc public static let lighten3: UIKit.UIColor
+    @objc public static let lighten2: UIKit.UIColor
+    @objc public static let lighten1: UIKit.UIColor
+    @objc public static let base: UIKit.UIColor
+    @objc public static let darken1: UIKit.UIColor
+    @objc public static let darken2: UIKit.UIColor
+    @objc public static let darken3: UIKit.UIColor
+    @objc public static let darken4: UIKit.UIColor
     @objc deinit
   }
   @objc override dynamic public init(white: CoreGraphics.CGFloat, alpha: CoreGraphics.CGFloat)
@@ -3621,20 +3635,20 @@ extension IMRoomSearchingViewController : UIKit.UITableViewDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMVideoMessageCollectionViewCell : IMMessageCollectionViewCell, IMProgressDelegate {
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCircularProgressButtonInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var circularProgressButton: IMCircularProgressButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var playButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var durationLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var bubbleViewWidthConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -3684,23 +3698,23 @@ extension IMUtilityInputViewController : UIKit.UICollectionViewDelegateFlowLayou
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class IMUtilityCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) final public var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) final public var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public var isHighlighted: Swift.Bool {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) @objc override final public var isSelected: Swift.Bool {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) final public var type: IMUtilityType? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -3738,15 +3752,15 @@ extension IMPhotoInputViewController : UIKit.UICollectionViewDelegate {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var linkPreview: IMLinkPreview? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -3763,7 +3777,7 @@ extension IMPhotoInputViewController : UIKit.UICollectionViewDelegate {
   }
   public init(json: SwiftyJSON.JSON)
   public init(name: Swift.String)
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func indexedProperties() -> [Swift.String]
   final public var differenceIdentifier: Swift.String {
@@ -3798,24 +3812,24 @@ extension IMPhotoInputViewController : UIKit.UICollectionViewDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMFileMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var iconImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var filenameLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var darkView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCircularProgressButtonInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var circularProgressButton: IMCircularProgressButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
@@ -3839,18 +3853,18 @@ extension IMFileMessageTableViewCell : IMProgressDelegate {
   }
   final public var linkURL: Foundation.URL? {
     get
-    set(value)
+    set
   }
   final public var imageURL: Foundation.URL? {
     get
-    set(value)
+    set
   }
   final public var isYoutube: Swift.Bool {
     get
-    set(value)
+    set
   }
   public init(linkString: Swift.String, imageString: Swift.String, title: Swift.String, desc: Swift.String)
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
   @objc final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
@@ -3977,19 +3991,19 @@ final public class IMReadMessageTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) open var coordinate: CoreLocation.CLLocationCoordinate2D?
   @_Concurrency.MainActor(unsafe) open var closeButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var mapView: MapKit.MKMapView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var annotation: MapKit.MKPointAnnotation {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var locationManager: CoreLocation.CLLocationManager {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var hasLoadedLocation: Swift.Bool
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
@@ -4105,15 +4119,15 @@ extension IMVideoMessageSectionController : IMMessageCellDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMStickerPreviewView : UIKit.UIView {
   @_Concurrency.MainActor(unsafe) open var stickerButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var closeButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var message: IMMessage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
@@ -4167,7 +4181,7 @@ extension IMProgressDelegate {
   @objc deinit
 }
 @_hasMissingDesignatedInitializers open class IMMessagesManager {
-  public static var shared: IMMessagesManager
+  public static let shared: IMMessagesManager
   public var roomID: Swift.String? {
     get
   }
@@ -4218,57 +4232,57 @@ extension IMMessagesManager : IMSocketManagerDelegate {
   @_Concurrency.MainActor(unsafe) public static var showNumberOfUnreadOnBackButton: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var adapter: IGListKit.ListAdapter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var collectionView: IGListKit.ListCollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var bottomButtonBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var bottomButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var inputBarViewController: IMInputAccessoryViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var messagesSelectionInputAccessoryViewController: IMMessagesSelectionInputAccessoryViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerInputViewController: UIKit.UIInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioInputViewController: IMAudioInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var utilityInputViewController: IMUtilityInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var templateInputViewController: IMTemplateInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var photoInputViewController: IMPhotoInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerPreviewViewBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var stickerPreviewView: IMStickerPreviewView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerMessage: IMMessage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var disableInputAccessoryViewController: IMDisableInputAccessoryViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var viewModel: IMMessagesViewModel!
   @_Concurrency.MainActor(unsafe) public var roomID: Swift.String
@@ -4280,34 +4294,34 @@ extension IMMessagesManager : IMSocketManagerDelegate {
   }
   @_Concurrency.MainActor(unsafe) open var tapGestureRecognizer: UIKit.UITapGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var muteIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var downIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var triangleView: TriangleView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var stackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var customView: UIKit.UIView? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var emptyViewOfMessageSearching: UIKit.UIView?
-  @_Concurrency.MainActor(unsafe) public convenience init(roomID: Swift.String)
+  @_Concurrency.MainActor(unsafe) convenience public init(roomID: Swift.String)
   @objc deinit
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
@@ -4464,30 +4478,30 @@ extension IMFileMessageSectionController : IMMessageCellDelegate {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var nameLabelRightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var namelabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textLabelRightConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var textlabel: IMPaddingLabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var line: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var sender: IMUser?
   @_Concurrency.MainActor(unsafe) weak open var responseObject: IMResponseObject? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -4501,12 +4515,12 @@ public protocol IMImageViewerCollectionViewCellDelegate : AnyObject {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMImageViewerCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var delegate: IMImageViewerCollectionViewCellDelegate?
   @_Concurrency.MainActor(unsafe) weak public var image: IMImage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
@@ -4550,11 +4564,11 @@ final public class IMDeclineInvitationTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMDisableInputAccessoryViewController : UIKit.UIInputViewController {
   @_Concurrency.MainActor(unsafe) open var imageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var safeAreaInsets: UIKit.UIEdgeInsets
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
@@ -4637,7 +4651,7 @@ extension NetworkRequest where Self.ResponseType == IgnorableResult {
   @_Concurrency.MainActor(unsafe) public static var imagePlaceholder: UIKit.UIImage?
   @_Concurrency.MainActor(unsafe) open var mainImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
@@ -4658,9 +4672,9 @@ extension NetworkRequest where Self.ResponseType == IgnorableResult {
   }
   final public var coordinate: CoreLocation.CLLocationCoordinate2D {
     get
-    set(value)
+    set
   }
-  @objc override required dynamic public init()
+  @objc required override dynamic public init()
   @objc override public static func ignoredProperties() -> [Swift.String]
   public init(address: Swift.String?, latitude: Swift.Double, longitude: Swift.Double)
   final public func copy() -> IMLocation
@@ -4669,23 +4683,23 @@ extension NetworkRequest where Self.ResponseType == IgnorableResult {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMAddFolderViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) open var textField: IMTextField {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var button: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var roomGroup: IMRoomGroup? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var rooms: [IMRoom]
   @_Concurrency.MainActor(unsafe) open var selectedRoomIds: [Swift.String]
@@ -4713,27 +4727,27 @@ extension IMAddFolderViewController : UIKit.UITableViewDataSourcePrefetching {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMAddFolderTableViewCell : UIKit.UITableViewCell {
   @_Concurrency.MainActor(unsafe) open var checkBoxImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var room: IMRoom? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -4760,7 +4774,7 @@ public protocol IGListAdapterViewModelDelagate : AnyObject {
   @_Concurrency.MainActor(unsafe) public static var deleteDataWhenLeaveRoom: Swift.Bool
   @_Concurrency.MainActor(unsafe) public static var leaveRoomEnabled: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var roomID: Swift.String
-  @_Concurrency.MainActor(unsafe) public convenience init(roomID: Swift.String)
+  @_Concurrency.MainActor(unsafe) convenience public init(roomID: Swift.String)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidDisappear(_ animated: Swift.Bool)
@@ -4816,20 +4830,20 @@ final public class IMUpdateRoomGroupsTask : NetworkRequest {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMTextMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var label: ActiveLabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var translatedTextLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isTableViewInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var responseView: IMTextMessageResponseView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isResponseViewInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
@@ -4854,7 +4868,7 @@ extension IMTextMessageTableViewCell : UIKit.UITableViewDataSourcePrefetching {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMCarouselTemplateTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var sizes: [CoreGraphics.CGSize]
   @_Concurrency.MainActor(unsafe) open var maxHeight: CoreGraphics.CGFloat {
@@ -4905,24 +4919,24 @@ extension IMAudioPlayer : AVFAudio.AVAudioPlayerDelegate {
   @_Concurrency.MainActor(unsafe) open var bubbleViewWidthConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var mainImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCircularProgressButtonInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var circularProgressButton: IMCircularProgressButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var darkView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var playButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var durationLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
@@ -4992,63 +5006,63 @@ extension IMMessageCell {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMessageCollectionViewCell : UIKit.UICollectionViewCell, IMMessageCell {
   @_Concurrency.MainActor(unsafe) public var timeLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var nameLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var readReceiptLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var dateFormatter: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var bubbleView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var bubbleMaskView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var isBubbleMaskViewInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var avatarView: IMAvatarView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var sendingIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var retryButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var isRetrybuttonInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var checkbox: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var isCheckboxInitiated: Swift.Bool
   @_Concurrency.MainActor(unsafe) public var longPressGestureRecognizer: UIKit.UILongPressGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var tapGestureRecognizer: UIKit.UITapGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var swipeGestureRecognizer: UIKit.UISwipeGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var delegate: IMMessageCellDelegate?
   @_Concurrency.MainActor(unsafe) weak public var message: IMMessage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) open func updateUI()
@@ -5063,11 +5077,11 @@ extension IMMessageCell {
   @_Concurrency.MainActor(unsafe) public static var urlTapHandler: ((Foundation.URL) -> ())?
   @_Concurrency.MainActor(unsafe) public var textLabel: ActiveLabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var responseTapGestureRecognizer: UIKit.UITapGestureRecognizer {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var collectionView: IGListKit.ListCollectionView {
     get
@@ -5082,7 +5096,7 @@ extension IMMessageCell {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class IMTextMessageCollectionViewCellIncoming : IMTextMessageCollectionViewCell {
   @_Concurrency.MainActor(unsafe) public var translatedTextLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
@@ -5156,123 +5170,123 @@ public protocol IMImagePickerControllerDelegate : AnyObject {
   public typealias Style = IMStyle.messages.inputAccessory
   @_Concurrency.MainActor(unsafe) open var keyboardType: IMKeyboardType {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var primaryViewTopConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var primaryViewBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var primaryView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var line: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isTextBarExpanded: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var textBar: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textBarLeftConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var textView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var photoTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var utilityTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var templateTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var sendButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var cameraButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var fileButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var mapButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var returnButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var addButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imagePicker: UIKit.UIImagePickerController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var cameraImagePicker: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) open var photosImagePicker: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) open var documentPicker: UIKit.UIDocumentPickerViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var responseObjectInputAccessoryViewHeight: CoreGraphics.CGFloat {
     get
   }
   @_Concurrency.MainActor(unsafe) open var responseObjectInputAccessoryView: IMResponseObjectInputAccessoryView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak open var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) open var roomID: Swift.String
   @_Concurrency.MainActor(unsafe) open var responseObject: IMResponseObject? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var customViewTopConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var customView: UIKit.UIView? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textViewHight: CoreGraphics.CGFloat {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var safeAreaInsets: UIKit.UIEdgeInsets {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var selectedPhotosCount: Swift.Int? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public func resizeViewFrame()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
@@ -5331,105 +5345,105 @@ extension IMInputAccessoryViewController : IMPhotoInputViewControllerDelegate {
   @_Concurrency.MainActor(unsafe) open var primaryViewBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var primaryView: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isTextBarExpanded: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var textBar: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var textBarLeftConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var textView: FlexibleTextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var utilityTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var templateTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var photoTextView: UIKit.UITextView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var sendButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imageButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var cameraButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var returnButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var addButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var imagePicker: UIKit.UIImagePickerController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var customView: UIKit.UIView? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var mentionsTableView: IMMentionsTableView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var responseObjectInputAccessoryView: IMResponseObjectInputAccessoryView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var responseObject: IMResponseObject? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var selectedPhotoBar: UIKit.UIView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var sendImagesButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var dismissPhotoButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var photosCountLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var selectedPhotosCount: Swift.Int? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
     @_Concurrency.MainActor(unsafe) @objc get
@@ -5474,15 +5488,15 @@ extension IMInputAccessoryView : IMMentionsTableViewDelegate {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String! {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var attributedText: Foundation.NSAttributedString! {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var font: UIKit.UIFont? {
     @_Concurrency.MainActor(unsafe) @objc get
-    @_Concurrency.MainActor(unsafe) @objc set(value)
+    @_Concurrency.MainActor(unsafe) @objc set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreGraphics.CGSize {
     @_Concurrency.MainActor(unsafe) @objc get
@@ -5491,6 +5505,15 @@ extension IMInputAccessoryView : IMMentionsTableViewDelegate {
 }
 extension IMInputAccessoryView : IMPhotoInputViewControllerDelegate {
   @_Concurrency.MainActor(unsafe) open func didUpdateSelectedAssets(_ selectedAssets: [Photos.PHAsset])
+}
+extension IMInputAccessoryView : Stipop.SPUIButtonDelegate {
+  @_Concurrency.MainActor(unsafe) public var user: Stipop.SPUser {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var viewType: Stipop.SPViewType {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public func onStickerSelect(_ sticker: Stipop.SPSticker)
 }
 public enum IMMediaUploaderError : Swift.Error {
   case noData
@@ -5501,7 +5524,7 @@ public enum IMMediaUploaderError : Swift.Error {
   }
 }
 @_hasMissingDesignatedInitializers open class IMMediaUploader {
-  public static var shared: IMMediaUploader
+  public static let shared: IMMediaUploader
   public var progressDelegates: [Swift.String : IMProgressDelegateBox]
   public var providers: [Swift.String : [IMMoyaProvider<IMService>]]
   open func uploadImage(_ image: IMImage) -> PromiseKit.Promise<(originURL: Foundation.URL, thumbnailURL: Foundation.URL)>
@@ -5572,9 +5595,9 @@ public enum IMMessageAction : Swift.String, Swift.CaseIterable {
   @_Concurrency.MainActor(unsafe) public var actionItems: [IMMessageActionItem]
   @_Concurrency.MainActor(unsafe) public var maskView: UIKit.UIView {
     get
-    set(value)
+    set
   }
-  @_Concurrency.MainActor(unsafe) public convenience init?(message: IMMessage, sourceView: UIKit.UIView, didSelectItem: ((Swift.String) -> ())?)
+  @_Concurrency.MainActor(unsafe) convenience public init?(message: IMMessage, sourceView: UIKit.UIView, didSelectItem: ((Swift.String) -> ())?)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
@@ -5598,32 +5621,32 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
   @_Concurrency.MainActor(unsafe) open var stickerPreviewViewBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var stickerPreviewView: IMStickerPreviewView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stickerMessage: IMMessage? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var bottomButtonBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var bottomButton: UIKit.UIButton {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var inputBarView: IMInputAccessoryView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var messagesSelectionInputAccessoryViewController: IMMessagesSelectionInputAccessoryViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var disableInputAccessoryViewController: IMDisableInputAccessoryViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open var canBecomeFirstResponder: Swift.Bool {
     @_Concurrency.MainActor(unsafe) @objc get
@@ -5636,52 +5659,52 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
   }
   @_Concurrency.MainActor(unsafe) open var stickerInputViewController: UIKit.UIInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var audioInputViewController: IMAudioInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var utilityInputViewController: IMUtilityInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var templateInputViewController: IMTemplateInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var photoInputViewController: IMPhotoInputViewController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var floatingPanelController: FloatingPanel.FloatingPanelController {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var titleLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var muteIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var downIndicator: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var stackView: UIKit.UIStackView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var isCustomViewAnimating: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var customView: UIKit.UIView? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var fixedTopView: UIKit.UIView? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) final public let roomID: Swift.String
   @_Concurrency.MainActor(unsafe) public init(roomID: Swift.String)
@@ -5753,11 +5776,11 @@ extension IMChatRoomViewController : IMNetworkReachabilityManagerDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMSystemMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var label: IMPaddingLabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var mainDateFormatter: Foundation.DateFormatter {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
@@ -5769,7 +5792,7 @@ extension IMChatRoomViewController : IMNetworkReachabilityManagerDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMImageCarouselTemplateTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) override open func updateUI()
@@ -5787,15 +5810,15 @@ extension IMImageCarouselTemplateTableViewCell : UIKit.UICollectionViewDataSourc
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMLocationMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var mapView: MapKit.MKMapView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var annotation: MapKit.MKPointAnnotation {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) open var label: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForReuse()
   @_Concurrency.MainActor(unsafe) override open func setupUI(_ reuseIdentifier: Swift.String?)
@@ -5826,7 +5849,7 @@ extension IMImageCarouselTemplateTableViewCell : UIKit.UICollectionViewDataSourc
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMForwardingMessagesViewController : UIKit.UIViewController {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
@@ -5865,18 +5888,61 @@ extension IMForwardingMessagesViewModel : IMRoomsManagerDelegate {
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class IMForwardingMessagesCollectionViewCell : UIKit.UICollectionViewCell {
   @_Concurrency.MainActor(unsafe) public var checkBoxImageView: UIKit.UIImageView {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) public var detailLabel: UIKit.UILabel {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) weak public var room: IMRoom? {
     get
-    set(value)
+    set
   }
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreGraphics.CGRect)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func prepareForReuse()
   @objc deinit
 }
+extension HorizontalAlignment : Swift.Equatable {}
+extension HorizontalAlignment : Swift.Hashable {}
+extension VerticalAlignment : Swift.Equatable {}
+extension VerticalAlignment : Swift.Hashable {}
+extension IMRoomsViewController.SearchBarStatus : Swift.Equatable {}
+extension IMRoomsViewController.SearchBarStatus : Swift.Hashable {}
+extension IMRoomAction : Swift.Equatable {}
+extension IMRoomAction : Swift.Hashable {}
+extension IMRoomAction : Swift.RawRepresentable {}
+extension IMSocketEventType : Swift.Equatable {}
+extension IMSocketEventType : Swift.Hashable {}
+extension IMSocketEventType : Swift.RawRepresentable {}
+extension IMSocketManager.EncodingType : Swift.Equatable {}
+extension IMSocketManager.EncodingType : Swift.Hashable {}
+extension IMSocketManager.EncodingType : Swift.RawRepresentable {}
+extension IMMessageType : Swift.Equatable {}
+extension IMMessageType : Swift.Hashable {}
+extension IMMessageStatus : Swift.Equatable {}
+extension IMMessageStatus : Swift.Hashable {}
+extension IMMessageStatus : Swift.RawRepresentable {}
+extension IMMessageGroupPosition : Swift.Hashable {}
+extension IMRoomType : Swift.Equatable {}
+extension IMRoomType : Swift.Hashable {}
+extension IMRoomType : Swift.RawRepresentable {}
+extension IMSystemEventType : Swift.Equatable {}
+extension IMSystemEventType : Swift.Hashable {}
+extension IMRoomSearchingViewController.Mode : Swift.Equatable {}
+extension IMRoomSearchingViewController.Mode : Swift.Hashable {}
+extension IMStyle.messages.sticker.StickerType : Swift.Equatable {}
+extension IMStyle.messages.sticker.StickerType : Swift.Hashable {}
+extension IMKitTranslationError : Swift.Equatable {}
+extension IMKitTranslationError : Swift.Hashable {}
+extension IMMessageSendingError : Swift.Equatable {}
+extension IMMessageSendingError : Swift.Hashable {}
+extension IMKeyboardType : Swift.Equatable {}
+extension IMKeyboardType : Swift.Hashable {}
+extension IMMediaUploaderError : Swift.Equatable {}
+extension IMMediaUploaderError : Swift.Hashable {}
+extension IMMessageActionType : Swift.Equatable {}
+extension IMMessageActionType : Swift.Hashable {}
+extension IMMessageAction : Swift.Equatable {}
+extension IMMessageAction : Swift.Hashable {}
+extension IMMessageAction : Swift.RawRepresentable {}
