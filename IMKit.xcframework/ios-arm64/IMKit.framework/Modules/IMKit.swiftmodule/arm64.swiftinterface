@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
-// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IMKit
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
+// swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IMKit
 import AVFoundation
 import AVKit
 import ActiveLabel
@@ -23,6 +23,7 @@ import LinkPresentation
 import MapKit
 import MobileCoreServices
 import Moya
+import NaturalLanguage
 import Photos
 import PhotosUI
 import PromiseKit
@@ -5506,14 +5507,14 @@ extension IMInputAccessoryView : IMMentionsTableViewDelegate {
 extension IMInputAccessoryView : IMPhotoInputViewControllerDelegate {
   @_Concurrency.MainActor(unsafe) open func didUpdateSelectedAssets(_ selectedAssets: [Photos.PHAsset])
 }
-extension IMInputAccessoryView : Stipop.SPUIButtonDelegate {
-  @_Concurrency.MainActor(unsafe) public var user: Stipop.SPUser {
+extension IMInputAccessoryView : SPUIButtonDelegate {
+  @_Concurrency.MainActor(unsafe) public var user: SPUser {
     get
   }
-  @_Concurrency.MainActor(unsafe) public var viewType: Stipop.SPViewType {
+  @_Concurrency.MainActor(unsafe) public var viewType: SPViewType {
     get
   }
-  @_Concurrency.MainActor(unsafe) public func onStickerSelect(_ sticker: Stipop.SPSticker)
+  @_Concurrency.MainActor(unsafe) public func onStickerSelect(_ sticker: SPSticker)
 }
 public enum IMMediaUploaderError : Swift.Error {
   case noData
@@ -5618,6 +5619,7 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
 @objc @_Concurrency.MainActor(unsafe) open class IMChatRoomViewController : UIObservableViewController {
   @_Concurrency.MainActor(unsafe) final public let viewModel: IMChatRoomViewModel
   @_Concurrency.MainActor(unsafe) public static var showRoomInfoButton: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public static var showSearchButton: Swift.Bool
   @_Concurrency.MainActor(unsafe) open var stickerPreviewViewBottomConstraint: SnapKit.Constraint?
   @_Concurrency.MainActor(unsafe) open var stickerPreviewView: IMStickerPreviewView {
     get
@@ -5706,6 +5708,7 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) open var emptyViewOfMessageSearching: UIKit.UIView?
   @_Concurrency.MainActor(unsafe) final public let roomID: Swift.String
   @_Concurrency.MainActor(unsafe) public init(roomID: Swift.String)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
@@ -5713,6 +5716,7 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
   @_Concurrency.MainActor(unsafe) override open func applicationDidBecomeActive()
   @_Concurrency.MainActor(unsafe) open func setTableViewInset()
@@ -5725,6 +5729,8 @@ extension IMMessageActionPopoverViewController : UIKit.UITableViewDataSource {
   @objc @_Concurrency.MainActor(unsafe) open func bottomButtonTapped()
   @_Concurrency.MainActor(unsafe) open func chatRoomDidUpdate(room: IMRoom)
   @objc @_Concurrency.MainActor(unsafe) open func titleViewTapped()
+  @objc @_Concurrency.MainActor(unsafe) open func searchButtonTapped()
+  @_Concurrency.MainActor(unsafe) open func dismissMessageSearchingViewControllerIfNeeded()
 }
 extension IMChatRoomViewController : IMChatRoomViewModelDelagate {
   @_Concurrency.MainActor(unsafe) open func scrollToBotom(animated: Swift.Bool = true)
@@ -5772,6 +5778,10 @@ extension IMChatRoomViewController : UIKit.UIDocumentPickerDelegate {
 }
 extension IMChatRoomViewController : IMNetworkReachabilityManagerDelegate {
   @_Concurrency.MainActor(unsafe) public func networkStatusChanged(_ status: Alamofire.NetworkReachabilityManager.NetworkReachabilityStatus)
+}
+extension IMChatRoomViewController : UIKit.UINavigationControllerDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, animationControllerFor operation: UIKit.UINavigationController.Operation, from fromVC: UIKit.UIViewController, to toVC: UIKit.UIViewController) -> UIKit.UIViewControllerAnimatedTransitioning?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, interactionControllerFor animationController: UIKit.UIViewControllerAnimatedTransitioning) -> UIKit.UIViewControllerInteractiveTransitioning?
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMSystemMessageTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var label: IMPaddingLabel {
