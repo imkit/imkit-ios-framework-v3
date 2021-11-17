@@ -1410,7 +1410,7 @@ public struct IMKit {
   public static var bundle: Foundation.Bundle? {
     get
   }
-  public static var version: Swift.String? {
+  public static var version: Swift.String {
     get
   }
   @available(*, deprecated, renamed: "numberOfUnreadMessages")
