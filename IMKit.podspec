@@ -31,7 +31,7 @@ Pod::Spec.new do |s|
   s.dependency 'Socket.IO-Client-Swift', '~> 16'
   s.dependency 'Kingfisher', '~> 7'
   s.dependency 'Alamofire', '~> 5'
-  s.dependency 'RealmSwift', '~> 10'
+  s.dependency 'RealmSwift', '~> 10.18'
   s.dependency 'SwiftLinkPreview', '~> 3'
   s.dependency 'ActiveLabel', '~> 1.1'
   s.dependency 'SnapKit', '~> 5'
