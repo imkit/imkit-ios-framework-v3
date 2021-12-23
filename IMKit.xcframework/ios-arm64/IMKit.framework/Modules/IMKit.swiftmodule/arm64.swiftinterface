@@ -3490,29 +3490,6 @@ extension IMImagesMessageCollectionViewCell : IMProgressDelegate {
   @_Concurrency.MainActor(unsafe) open func requestDidResponse()
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMRoomsViewController : UIObservableViewController {
-  @_Concurrency.MainActor(unsafe) public static var searchBarEnabled: Swift.Bool
-  public enum SearchBarStatus {
-    case show
-    case hide
-    public static func == (a: IMRoomsViewController.SearchBarStatus, b: IMRoomsViewController.SearchBarStatus) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  @_Concurrency.MainActor(unsafe) public var searchBarStatus: IMRoomsViewController.SearchBarStatus
-  @_Concurrency.MainActor(unsafe) open var searchBarContainer: UIKit.UIView {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) open var topStackView: UIKit.UIStackView {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) open var searchBar: UIKit.UISearchBar {
-    get
-    set
-  }
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
     set
@@ -3539,19 +3516,14 @@ extension IMImagesMessageCollectionViewCell : IMProgressDelegate {
   @_Concurrency.MainActor(unsafe) public static var leftActions: [IMRoomAction]
   @_Concurrency.MainActor(unsafe) public static var rightActions: [IMRoomAction]
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) open func fetchRoomsIfNeeded()
   @_Concurrency.MainActor(unsafe) override open func applicationDidBecomeActive()
-  @_Concurrency.MainActor(unsafe) override open func keyboardWillShow(with keyboardRect: CoreGraphics.CGRect, duration: Foundation.TimeInterval, animationCurve: Swift.UInt)
-  @_Concurrency.MainActor(unsafe) override open func keyboardWillHide(with keyboardRect: CoreGraphics.CGRect, duration: Foundation.TimeInterval, animationCurve: Swift.UInt)
   @objc @_Concurrency.MainActor(unsafe) open func refreshControlPulled()
   @_Concurrency.MainActor(unsafe) open func emptyView(for tableView: UIKit.UITableView) -> UIKit.UIView?
   @_Concurrency.MainActor(unsafe) open func didSelectRoom(room: IMRoom)
   @_Concurrency.MainActor(unsafe) open func didSelectInvitation(invitation: IMInvitation)
-  @_Concurrency.MainActor(unsafe) open func hideSearchBarContainer(_ hide: Swift.Bool)
   @_Concurrency.MainActor(unsafe) open func goRoomSearchingViewController()
   @_Concurrency.MainActor(unsafe) open func removeKeyboardObserver()
   @_Concurrency.MainActor(unsafe) open func viewModelStateDidChange(state: ViewModelState)
@@ -3615,10 +3587,8 @@ extension IMRoomsViewController : UIKit.UISearchBarDelegate {
 extension IMRoomsViewController : FloatingPanel.FloatingPanelControllerDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func floatingPanel(_ fpc: FloatingPanel.FloatingPanelController, shouldRemoveAt location: CoreGraphics.CGPoint, with velocity: CoreGraphics.CGVector) -> Swift.Bool
 }
-extension IMRoomsViewController : UIKit.UIScrollViewDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewDidScroll(_ scrollView: UIKit.UIScrollView)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewWillEndDragging(_ scrollView: UIKit.UIScrollView, withVelocity velocity: CoreGraphics.CGPoint, targetContentOffset: Swift.UnsafeMutablePointer<CoreGraphics.CGPoint>)
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func scrollViewDidEndDragging(_ scrollView: UIKit.UIScrollView, willDecelerate decelerate: Swift.Bool)
+extension IMRoomsViewController : UIKit.UISearchResultsUpdating {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func updateSearchResults(for searchController: UIKit.UISearchController)
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMTextField : UIKit.UITextField {
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func textRect(forBounds: CoreGraphics.CGRect) -> CoreGraphics.CGRect
@@ -5956,8 +5926,6 @@ extension IMMessageStatus : Swift.Equatable {}
 extension IMMessageStatus : Swift.Hashable {}
 extension IMMessageStatus : Swift.RawRepresentable {}
 extension IMMessageGroupPosition : Swift.Hashable {}
-extension IMRoomsViewController.SearchBarStatus : Swift.Equatable {}
-extension IMRoomsViewController.SearchBarStatus : Swift.Hashable {}
 extension IMMessageSendingError : Swift.Equatable {}
 extension IMMessageSendingError : Swift.Hashable {}
 extension IMRoomAction : Swift.Equatable {}
