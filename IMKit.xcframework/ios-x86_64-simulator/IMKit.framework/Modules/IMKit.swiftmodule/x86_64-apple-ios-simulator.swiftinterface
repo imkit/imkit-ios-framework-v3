@@ -1925,6 +1925,21 @@ extension NetworkRequest where Self.ResponseType == IgnorableResult {
     get
   }
 }
+open class IMUpdateMemberPropertyTask : NetworkRequest {
+  public typealias ResponseType = SwiftyJSON.JSON
+  public init()
+  public var endpoint: Swift.String {
+    get
+  }
+  public var method: Alamofire.HTTPMethod {
+    get
+  }
+  public var parameters: [Swift.String : Any]? {
+    get
+  }
+  public func perform(roomId: Swift.String, uid: Swift.String, property: Swift.String, value: Any) -> PromiseKit.Promise<IMUpdateMemberPropertyTask.ResponseType>
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMButtonsTemplateTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var mainImageView: UIKit.UIImageView {
     get
