@@ -4379,6 +4379,7 @@ public enum IMRoomAction : Swift.String, Swift.CaseIterable {
       @objc deinit
     }
     @_hasMissingDesignatedInitializers public class outgoingCell {
+      public static var showDeliveredStatus: Swift.Bool
       public static var backgroundColor: UIKit.UIColor
       public static var textColor: UIKit.UIColor
       public static var borderColor: UIKit.UIColor
