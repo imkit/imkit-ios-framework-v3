@@ -1345,14 +1345,14 @@ SWIFT_CLASS("_TtC5IMKit30IMMessageActionsViewController")
 @end
 
 
-@interface IMMessageActionsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
-- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
-@end
-
-
 @interface IMMessageActionsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView * _Nonnull)collectionView numberOfItemsInSection:(NSInteger)section SWIFT_WARN_UNUSED_RESULT;
 - (UICollectionViewCell * _Nonnull)collectionView:(UICollectionView * _Nonnull)collectionView cellForItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath SWIFT_WARN_UNUSED_RESULT;
+@end
+
+
+@interface IMMessageActionsViewController (SWIFT_EXTENSION(IMKit)) <UICollectionViewDelegate>
+- (void)collectionView:(UICollectionView * _Nonnull)collectionView didSelectItemAtIndexPath:(NSIndexPath * _Nonnull)indexPath;
 @end
 
 

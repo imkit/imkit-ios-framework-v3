@@ -988,6 +988,12 @@ extension IMMentionsTableView : UIKit.UITableViewDataSource {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) open var data: [IMRoom] {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var selectedRoomIDs: [Swift.String] {
+    get
+  }
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
@@ -1781,6 +1787,7 @@ public struct IMKit {
   public static var unsendableMessageTypes: [IMMessageType]
   public static var editableMessageTypes: [IMMessageType]
   public static var reportableMessageTypes: [IMMessageType]
+  public static var shareableMessageTypes: [IMMessageType]
   public static var maximumFileSizeLimitInMB: Swift.UInt {
     get
     set
@@ -2805,6 +2812,7 @@ public enum IMMessageAction : Swift.String, Swift.CaseIterable {
   case unsend
   case edit
   case report
+  case share
   public init?(rawValue: Swift.String)
   public typealias AllCases = [IMMessageAction]
   public typealias RawValue = Swift.String
@@ -5485,14 +5493,8 @@ public struct NetworkClient : NetworkClientType {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) open var dateFormatterWithYear: Foundation.DateFormatter {
-    get
-    set
-  }
-  @_Concurrency.MainActor(unsafe) open var dateFormatterWithoutYear: Foundation.DateFormatter {
-    get
-    set
-  }
+  @_Concurrency.MainActor(unsafe) public static var dateFormatterWithYear: Foundation.DateFormatter
+  @_Concurrency.MainActor(unsafe) public static var dateFormatterWithoutYear: Foundation.DateFormatter
   @_Concurrency.MainActor(unsafe) open var date: Foundation.Date? {
     get
     set
