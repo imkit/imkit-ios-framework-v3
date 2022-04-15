@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IMKit'
-  s.version          = '0.367.0'
+  s.version          = '0.368.0'
   s.summary          = 'IMKit Framework'
 
 # This description is used to generate tags and improve search results.
@@ -41,5 +41,6 @@ Pod::Spec.new do |s|
   s.dependency 'DifferenceKit', '~> 1.2'
   s.dependency 'FloatingPanel', '~> 2.5'
   s.dependency 'TagListView', '~> 1.4'
-  s.dependency 'Stipop', '0.3.0'
+  s.dependency 'Stipop', '0.3.1'
+  s.dependency 'Parchment', '~> 3.2'
 end
