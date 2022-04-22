@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IMKit'
-  s.version          = '0.368.0'
+  s.version          = '0.369.0'
   s.summary          = 'IMKit Framework'
 
 # This description is used to generate tags and improve search results.
@@ -34,7 +34,7 @@ Pod::Spec.new do |s|
   s.dependency 'RealmSwift', '~> 10.20.1'
   s.dependency 'SwiftLinkPreview', '~> 3'
   s.dependency 'ActiveLabel', '~> 1.1'
-  s.dependency 'SnapKit', '~> 5'
+  s.dependency 'SnapKit', '~> 5.6'
   s.dependency 'Hero', '~> 1.6'
   s.dependency 'SwiftyJSON', '~> 5'
   s.dependency 'Moya', '~> 15'

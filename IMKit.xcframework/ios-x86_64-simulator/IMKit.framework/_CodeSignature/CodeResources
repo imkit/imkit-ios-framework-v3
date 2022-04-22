@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/IMKit-Swift.h</key>
 		<data>
-		HfklMwPgpkF3Ryufc3K4YI2lFoM=
+		mwZ+AXTzX/7H6eA4+BBVnEM/l5s=
 		</data>
 		<key>Headers/IMKit.h</key>
 		<data>
@@ -18,19 +18,19 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		7WtR1kpcSslxtDqZDp4CXHv+x6s=
+		coyuRcY+pWc1sU8CkknPz1yBofw=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		mqW8U3XsfAY8lmVooWYtutkexRQ=
+		gxRNKu/wbEKmKZ43s++3xVV0wbU=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		jh1AWl0F5r/0/4vRH8qxJ6fGbno=
+		4rWPA5VzHyPUD31H/Fd9L+bIFyw=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		icgpZCDhqq871hbj48HwesEMAvc=
+		LP0EH2O62s+6CLtcNLB1Dqgpx2s=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -158,7 +158,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xrpNK7p2i00CUyxvoOLq0uGa4ZPprl9wCJ/MfCu4l2w=
+			xd4sSX2aCQUjEthchUPlybQ9nxzOobZl18sicgRMexc=
 			</data>
 		</dict>
 		<key>Headers/IMKit.h</key>
@@ -172,21 +172,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gTWvxuxfMk9gSn+kCRP348fDvBuWN3EVePkf9R2Dtno=
+			Kvw7oly9Pf7+ezbU+A/KLrMIwAFF02HqxMguJjl5KQ8=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			tJ6KxOmtj8U2CYx/XYTnH3uPK7V5YW5vzgkR6MWVIj0=
+			xzF3zC0QEvdIvRtE6csh1M54zjJkx+C+Z7qGhjUYkXA=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			26OFzTy6KN7UccUEK5icec5QDSxfeORNF4u5zDvYD0Q=
+			ItEmRTBZG9SbKEeiAetXmM1wLRH5vcS4ehJ/8dhKSPI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
