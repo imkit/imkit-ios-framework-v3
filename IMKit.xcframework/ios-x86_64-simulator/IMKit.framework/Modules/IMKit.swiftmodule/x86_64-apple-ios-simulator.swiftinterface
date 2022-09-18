@@ -2599,7 +2599,7 @@ final public class IMUpdateMyProfileTask : NetworkRequest {
   final public var parameters: [Swift.String : Any]? {
     get
   }
-  final public func perform(nickname: Swift.String? = nil, avatarURL: Foundation.URL? = nil, description: Swift.String? = nil, notificationEnabled: Swift.Bool? = nil) -> PromiseKit.Promise<IMUpdateMyProfileTask.ResponseType>
+  final public func perform(nickname: Swift.String? = nil, avatarURL: Foundation.URL? = nil, description: Swift.String? = nil) -> PromiseKit.Promise<IMUpdateMyProfileTask.ResponseType>
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMLinkPreviewCollectionViewCell : UIKit.UICollectionViewCell {
@@ -2866,6 +2866,21 @@ final public class IMJoinRoomTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLayoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+final public class IMEnableMyNotificationTask : NetworkRequest {
+  public typealias ResponseType = IMUser
+  public init()
+  final public var endpoint: Swift.String {
+    get
+  }
+  final public var method: Alamofire.HTTPMethod {
+    get
+  }
+  final public var parameters: [Swift.String : Any]? {
+    get
+  }
+  final public func perform() -> PromiseKit.Promise<IMEnableMyNotificationTask.ResponseType>
   @objc deinit
 }
 final public class IMFetchTokenTask : NetworkRequest {
@@ -3841,6 +3856,21 @@ public enum IMRoomAction : Swift.String, Swift.CaseIterable {
   @objc override dynamic open func didUpdate(to object: Any)
   @objc override dynamic open func didSelectItem(at index: Swift.Int)
   @objc override dynamic public init()
+  @objc deinit
+}
+final public class IMDisableMyNotificationTask : NetworkRequest {
+  public typealias ResponseType = IMUser
+  public init()
+  final public var endpoint: Swift.String {
+    get
+  }
+  final public var method: Alamofire.HTTPMethod {
+    get
+  }
+  final public var parameters: [Swift.String : Any]? {
+    get
+  }
+  final public func perform() -> PromiseKit.Promise<IMDisableMyNotificationTask.ResponseType>
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers final public class IMResponseObject : RealmSwift.Object {
@@ -5270,6 +5300,18 @@ open class IMUpdateMemberPropertyTask : NetworkRequest {
 extension IMCarouselTemplateSectionController : IMMessageCellDelegate {
   open func cellDidTapped()
 }
+final public class IMBlockUserTask : NetworkRequest {
+  public typealias ResponseType = Swift.Bool
+  public init()
+  final public var endpoint: Swift.String {
+    get
+  }
+  final public var method: Alamofire.HTTPMethod {
+    get
+  }
+  final public func perform(uid: Swift.String) -> PromiseKit.Promise<IMBlockUserTask.ResponseType>
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers final public class IMLinkPreviewSectionController : IGListKit.ListSectionController {
   final public var isOutgoingMessage: Swift.Bool
   @objc override final public func numberOfItems() -> Swift.Int
@@ -5914,6 +5956,18 @@ extension IMProgressDelegate {
 extension IMMessagesManager : IMSocketManagerDelegate {
   public func socketDidReceiveMessage(message: IMMessage)
   public func socketDidReceiveLastReadMessage(roomID: Swift.String, uid: Swift.String, messageID: Swift.String)
+}
+final public class IMUnblockUserTask : NetworkRequest {
+  public typealias ResponseType = Swift.Bool
+  public init()
+  final public var endpoint: Swift.String {
+    get
+  }
+  final public var method: Alamofire.HTTPMethod {
+    get
+  }
+  final public func perform(uid: Swift.String) -> PromiseKit.Promise<IMUnblockUserTask.ResponseType>
+  @objc deinit
 }
 @objc @_inheritsConvenienceInitializers open class IMButtonsTemplateSectionController : IGListKit.ListSectionController, IMMessageSectionController, IMMessageCellDelegate {
   weak public var message: IMMessage?

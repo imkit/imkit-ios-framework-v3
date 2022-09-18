@@ -18,7 +18,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		0zdmJ+zmAuDyHfUxlgJy1zfLMRg=
+		YfcRO8Iu+kqG2wPMy/BQFfxjawY=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -26,11 +26,11 @@
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		pzeuPOQV6H83S9vsRlh8FiyJF7U=
+		4MNco/f9OfZcpMYHqsHqLNmlS2Y=
 		</data>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		0MDR5OWV3Cba6bVqwdrenSe9Ehw=
+		t/UCyVJCIvwCwixxLDhcvv3kFcM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -179,14 +179,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			PaRntB8tp2NBBGPNnmk3mNs4prQT9i9dQmEV9T7aUgA=
+			Z2zvFIS77vdL0aQ4QdOA/2tMmtrzHf2EKPf58X6z4zk=
 			</data>
 		</dict>
 		<key>Modules/IMKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iPmKOUmAOjq6kyuCS5xFcOJdd2wNnkEYBAtlD1nwlh8=
+			iYKGDV/MLTHBEicPMsGZ6rPc5UuDKDyZBnYAEnfcdxo=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
