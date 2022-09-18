@@ -619,6 +619,7 @@ SWIFT_CLASS("_TtC5IMKit24IMChatRoomViewController")
 @property (nonatomic, readonly, strong) UIInputViewController * _Nullable inputViewController;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 - (void)viewDidLoad;
+- (void)screenshotDidTake;
 - (void)viewWillAppear:(BOOL)animated;
 - (void)viewWillDisappear:(BOOL)animated;
 - (void)viewDidAppear:(BOOL)animated;
@@ -1536,6 +1537,8 @@ SWIFT_CLASS("_TtC5IMKit6IMRoom")
 @property (nonatomic, readonly, copy) NSString * _Nonnull extParams;
 @property (nonatomic, copy) NSString * _Nullable draft;
 @property (nonatomic) BOOL isMentioned;
+@property (nonatomic, copy) NSDate * _Nullable blockDate;
+@property (nonatomic, copy) NSDate * _Nullable blockedDate;
 @property (nonatomic, readonly, copy) NSString * _Nullable pref;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
@@ -2070,6 +2073,7 @@ SWIFT_CLASS("_TtC5IMKit6IMUser")
 @property (nonatomic, copy) NSString * _Nonnull nickname;
 @property (nonatomic, readonly, copy) NSString * _Nonnull desc;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull lastLoginTime;
+@property (nonatomic, readonly) BOOL notificationEnabled;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)ignoredProperties SWIFT_WARN_UNUSED_RESULT;

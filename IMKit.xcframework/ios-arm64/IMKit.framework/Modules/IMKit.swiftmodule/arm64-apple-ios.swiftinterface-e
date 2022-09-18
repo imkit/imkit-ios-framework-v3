@@ -1917,6 +1917,8 @@ public struct IMKit {
   public static var isReadReceiptsEnabled: Swift.Bool
   @available(*, deprecated, message: "Use forwardableMessageTypes instead")
   public static var isForwardingMessageEnabled: Swift.Bool
+  public static var isScreenshotNotificationEnabled: Swift.Bool
+  public static var isCopyTextNotificationEnabled: Swift.Bool
   public static var replyableMessageTypes: [IMMessageType]
   public static var forwardableMessageTypes: [IMMessageType]
   public static var copyableMessageTypes: [IMMessageType]
@@ -2117,6 +2119,9 @@ extension IMPhotoInputViewController : UIKit.UICollectionViewDelegate {
     get
   }
   @objc dynamic final public var lastLoginTime: Foundation.Date {
+    get
+  }
+  @objc dynamic final public var notificationEnabled: Swift.Bool {
     get
   }
   final public var avatarURL: Foundation.URL? {
@@ -2594,7 +2599,7 @@ final public class IMUpdateMyProfileTask : NetworkRequest {
   final public var parameters: [Swift.String : Any]? {
     get
   }
-  final public func perform(nickname: Swift.String? = nil, avatarURL: Foundation.URL? = nil, description: Swift.String? = nil) -> PromiseKit.Promise<IMUpdateMyProfileTask.ResponseType>
+  final public func perform(nickname: Swift.String? = nil, avatarURL: Foundation.URL? = nil, description: Swift.String? = nil, notificationEnabled: Swift.Bool? = nil) -> PromiseKit.Promise<IMUpdateMyProfileTask.ResponseType>
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMLinkPreviewCollectionViewCell : UIKit.UICollectionViewCell {
@@ -3409,6 +3414,7 @@ final public class IMUnsubscribeTask : NetworkRequest {
   }
   @objc deinit
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @objc @_Concurrency.MainActor(unsafe) open func screenshotDidTake()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillDisappear(_ animated: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
@@ -4071,6 +4077,7 @@ public enum IMMessageGroupPosition : Swift.Equatable {
   public init(roomID: Swift.String, data: Foundation.Data, originalPath: Foundation.URL? = nil, senderID: Swift.String, messageType: Swift.String, duration: Swift.Int? = nil, fileName: Swift.String? = nil, fileExtension: Swift.String? = nil, mimeType: Swift.String? = nil, bytes: Swift.Int? = nil)
   public init(roomID: Swift.String, coordinate: CoreLocation.CLLocationCoordinate2D, senderID: Swift.String, address: Swift.String)
   public init(roomID: Swift.String, senderID: Swift.String, file: IMFile, image: IMImage)
+  public init(roomId: Swift.String, senderId: Swift.String, announcement: Swift.String)
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
   @objc override public static func indexedProperties() -> [Swift.String]
@@ -5596,6 +5603,8 @@ public enum IMRoomType : Swift.String {
   }
   @objc dynamic final public var draft: Swift.String?
   @objc dynamic final public var isMentioned: Swift.Bool
+  @objc dynamic final public var blockDate: Foundation.Date?
+  @objc dynamic final public var blockedDate: Foundation.Date?
   final public let tags: RealmSwift.List<IMTag>
   final public let roomTags: RealmSwift.List<Swift.String>
   final public let members: RealmSwift.List<IMUser>
