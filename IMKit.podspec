@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'IMKit'
-  s.version          = '0.372.0'
+  s.version          = '0.373.0'
   s.summary          = 'IMKit Framework'
 
 # This description is used to generate tags and improve search results.
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = { 'Howard Sun' => 'howard@funtek.co' }
   s.source           = { :git => 'https://github.com/imkit/imkit-ios-framework-v3.git', :tag => s.version.to_s }
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '12.0'
   s.ios.vendored_frameworks = 'IMKit.xcframework'
 
   s.dependency 'IGListKit', '~> 4'
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
   s.dependency 'SwiftyJSON', '~> 5'
   s.dependency 'Moya', '~> 15'
   s.dependency 'DifferenceKit', '~> 1.2'
-  s.dependency 'FloatingPanel', '~> 2.5'
+  s.dependency 'FloatingPanel', '~> 2.5.3'
   s.dependency 'TagListView', '~> 1.4'
   s.dependency 'Stipop', '0.3.1'
   s.dependency 'Parchment', '~> 3.2'
