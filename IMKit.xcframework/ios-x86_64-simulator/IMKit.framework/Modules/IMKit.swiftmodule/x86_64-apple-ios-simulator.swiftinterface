@@ -3565,6 +3565,7 @@ extension IMFileMessageTableViewCell : IMProgressDelegate {
   @_Concurrency.MainActor(unsafe) weak open var message: IMMessage?
   @_Concurrency.MainActor(unsafe) weak open var image: IMImage?
   @_Concurrency.MainActor(unsafe) weak open var viewController: UIKit.UIViewController?
+  @_Concurrency.MainActor(unsafe) public static var messageDidReport: ((IMMessage) -> Swift.Void)?
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
