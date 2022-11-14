@@ -725,6 +725,22 @@ final public class IMDeleteRoomTask : NetworkRequest {
   final public func perform(roomdID: Swift.String) -> PromiseKit.Promise<IMDeleteRoomTask.ResponseType>
   @objc deinit
 }
+public class IMBlock {
+  public init(from json: SwiftyJSON.JSON)
+  @objc deinit
+}
+final public class IMFetchBlockListTask : NetworkRequest {
+  public typealias ResponseType = IMBlock
+  public init()
+  final public var endpoint: Swift.String {
+    get
+  }
+  final public var method: Alamofire.HTTPMethod {
+    get
+  }
+  final public func perform(roomId: Swift.String? = nil) -> PromiseKit.Promise<[IMFetchBlockListTask.ResponseType]>
+  @objc deinit
+}
 public enum IMSystemEventType {
   case JoinRoom
   case LeaveRoom
@@ -888,7 +904,7 @@ final public class IMBlockUserTask : NetworkRequest {
   final public var method: Alamofire.HTTPMethod {
     get
   }
-  final public func perform(uid: Swift.String) -> PromiseKit.Promise<IMBlockUserTask.ResponseType>
+  final public func perform(uid: Swift.String, roomId: Swift.String? = nil) -> PromiseKit.Promise<IMBlockUserTask.ResponseType>
   @objc deinit
 }
 public protocol IMMessageCell : UIKit.UICollectionViewCell {
@@ -1263,7 +1279,7 @@ final public class IMUnblockUserTask : NetworkRequest {
   final public var method: Alamofire.HTTPMethod {
     get
   }
-  final public func perform(uid: Swift.String) -> PromiseKit.Promise<IMUnblockUserTask.ResponseType>
+  final public func perform(uid: Swift.String, roomId: Swift.String? = nil) -> PromiseKit.Promise<IMUnblockUserTask.ResponseType>
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMessagesSelectionInputAccessoryViewController : UIKit.UIInputViewController {
