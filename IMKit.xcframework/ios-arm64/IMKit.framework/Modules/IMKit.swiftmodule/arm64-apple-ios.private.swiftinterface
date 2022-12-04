@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.2 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios12.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IMKit
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -541,6 +541,49 @@ final public class IMFetchRoomGroupsTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(style: UIKit.UITableViewCell.CellStyle, reuseIdentifier: Swift.String?)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMMessageSearchingViewController : UIObservableViewController {
+  public enum Mode {
+    case search
+    case result
+    case message
+    public static func == (a: IMMessageSearchingViewController.Mode, b: IMMessageSearchingViewController.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) open var emptyView: UIKit.UIView?
+  @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var mode: IMMessageSearchingViewController.Mode {
+    get
+  }
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) public func updateEmptyView()
+  @_Concurrency.MainActor(unsafe) public func showTopBottomViewsIfNeeded(_ show: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) override open func keyboardWillShow(with keyboardRect: CoreFoundation.CGRect, duration: Foundation.TimeInterval, animationCurve: Swift.UInt)
+  @_Concurrency.MainActor(unsafe) override open func keyboardWillHide(with keyboardRect: CoreFoundation.CGRect, duration: Foundation.TimeInterval, animationCurve: Swift.UInt)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+}
+extension IMMessageSearchingViewController : UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+}
+extension IMMessageSearchingViewController : UIKit.UICollectionViewDataSource {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, numberOfItemsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, cellForItemAt indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewCell
+}
+extension IMMessageSearchingViewController : UIKit.UICollectionViewDelegate {
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
 }
 public protocol NetworkClientType {
   func performRequest<Request>(_ networkRequest: Request) -> PromiseKit.Promise<Foundation.Data> where Request : NetworkRequest
@@ -6073,6 +6116,8 @@ extension IMMessageSendingError : Swift.Hashable {}
 extension IMRoomAction : Swift.Equatable {}
 extension IMRoomAction : Swift.Hashable {}
 extension IMRoomAction : Swift.RawRepresentable {}
+extension IMMessageSearchingViewController.Mode : Swift.Equatable {}
+extension IMMessageSearchingViewController.Mode : Swift.Hashable {}
 extension IMMediaUploaderError : Swift.Equatable {}
 extension IMMediaUploaderError : Swift.Hashable {}
 extension IMSystemEventType : Swift.Equatable {}
