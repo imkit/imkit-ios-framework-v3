@@ -1419,6 +1419,8 @@ final public class IMFetchQuittedRoomsTask : NetworkRequest {
   @objc dynamic final public var notificationEnabled: Swift.Bool {
     get
   }
+  @objc dynamic final public var city: Swift.String
+  @objc dynamic final public var country: Swift.String
   final public var avatarURL: Foundation.URL? {
     get
     set
@@ -1429,7 +1431,7 @@ final public class IMFetchQuittedRoomsTask : NetworkRequest {
   @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
   convenience public init(from dict: [Swift.String : Any])
-  public init(id: Swift.String, nickname: Swift.String? = nil, avatarString: Swift.String? = nil)
+  public init(id: Swift.String, nickname: Swift.String? = nil, avatarString: Swift.String? = nil, city: Swift.String? = nil, country: Swift.String? = nil)
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
   @objc final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol

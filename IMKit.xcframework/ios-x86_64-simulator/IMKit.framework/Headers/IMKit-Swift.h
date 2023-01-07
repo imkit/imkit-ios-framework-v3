@@ -2143,6 +2143,8 @@ SWIFT_CLASS("_TtC5IMKit6IMUser")
 @property (nonatomic, readonly, copy) NSString * _Nonnull desc;
 @property (nonatomic, readonly, copy) NSDate * _Nonnull lastLoginTime;
 @property (nonatomic, readonly) BOOL notificationEnabled;
+@property (nonatomic, copy) NSString * _Nonnull city;
+@property (nonatomic, copy) NSString * _Nonnull country;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 + (NSString * _Nullable)primaryKey SWIFT_WARN_UNUSED_RESULT;
 + (NSArray<NSString *> * _Nonnull)ignoredProperties SWIFT_WARN_UNUSED_RESULT;
