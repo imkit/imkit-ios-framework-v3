@@ -3697,6 +3697,10 @@ final public class IMRemoveMemberTask : NetworkRequest {
     get
     set
   }
+  @_Concurrency.MainActor(unsafe) open var numberOfUnreadLabel: IMPaddingLabel {
+    get
+    set
+  }
   @_Concurrency.MainActor(unsafe) weak open var roomGroup: IMRoomGroup? {
     get
     set
