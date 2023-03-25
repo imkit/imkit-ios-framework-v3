@@ -2804,6 +2804,7 @@ public protocol IMChatRoomViewModelDelagate : AnyObject {
   func safeScrollToRow(at indexPath: Foundation.IndexPath, at scrollPosition: UIKit.UITableView.ScrollPosition, animated: Swift.Bool)
   func roomDidUpdate(room: IMRoom)
   func messageSendingError(_ error: IMMessageSendingError)
+  func typingIndicatorDidChange(text: Swift.String?)
 }
 open class IMChatRoomViewModel {
   weak open var delegate: IMChatRoomViewModelDelagate?
@@ -2818,6 +2819,8 @@ open class IMChatRoomViewModel {
   }
   open var isViewpointKeptAtBottom: Swift.Bool
   open var targetMessageId: Swift.String?
+  open var typingUsers: [Swift.String]
+  open var typingIndicatorText: Swift.String?
   public init(roomID: Swift.String)
   open func fetchMessages()
   open func loadMessages()
@@ -2826,17 +2829,17 @@ open class IMChatRoomViewModel {
   @objc deinit
 }
 extension IMChatRoomViewModel : IMRoomsManagerDelegate {
-  open func roomDidUpdate(room: IMRoom)
+  public func roomDidUpdate(room: IMRoom)
 }
 extension IMChatRoomViewModel : IMMessagesManagerDelegate {
-  open func messageDidUpdate(targetMessageID: Swift.String, message: IMMessage)
-  open func messageDidAdd(message: IMMessage)
-  open func messagesDidUpdate(messages: [IMMessage])
-  open func messageDidRemove(messageID: Swift.String)
-  open func messageSendingError(_ error: IMMessageSendingError)
+  public func messageDidUpdate(targetMessageID: Swift.String, message: IMMessage)
+  public func messageDidAdd(message: IMMessage)
+  public func messagesDidUpdate(messages: [IMMessage])
+  public func messageDidRemove(messageID: Swift.String)
+  public func messageSendingError(_ error: IMMessageSendingError)
 }
 extension IMChatRoomViewModel : IMSocketManagerDelegate {
-  open func socketDidReceiveTyping(roomID: Swift.String, uid: Swift.String)
+  public func socketDidReceiveTyping(roomID: Swift.String, uid: Swift.String)
 }
 public protocol IMSocketManagerDelegate : AnyObject {
   func socketDidReceiveMessage(message: IMMessage)
@@ -5275,18 +5278,19 @@ final public class IMMuteRoomTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) open func dismissMessageSearchingViewControllerIfNeeded()
 }
 extension IMChatRoomViewController : IMChatRoomViewModelDelagate {
-  @_Concurrency.MainActor(unsafe) open func scrollToBotom(animated: Swift.Bool = true)
-  @_Concurrency.MainActor(unsafe) open func insert(at indexPaths1: [Foundation.IndexPath], reloadAt indexPaths2: [Foundation.IndexPath])
-  @_Concurrency.MainActor(unsafe) open func reload(at indexPaths: [Foundation.IndexPath])
-  @_Concurrency.MainActor(unsafe) open func deleteRows(at indexPaths: [Foundation.IndexPath])
+  @_Concurrency.MainActor(unsafe) public func scrollToBotom(animated: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public func insert(at indexPaths1: [Foundation.IndexPath], reloadAt indexPaths2: [Foundation.IndexPath])
+  @_Concurrency.MainActor(unsafe) public func reload(at indexPaths: [Foundation.IndexPath])
+  @_Concurrency.MainActor(unsafe) public func deleteRows(at indexPaths: [Foundation.IndexPath])
   @_Concurrency.MainActor(unsafe) open func deleteSections(_ sections: Foundation.IndexSet)
-  @_Concurrency.MainActor(unsafe) open func reloadData()
-  @_Concurrency.MainActor(unsafe) open func insert(sections: [[IMMessage]], rows: [IMMessage])
-  @_Concurrency.MainActor(unsafe) open func insert(at sections: Foundation.IndexSet)
-  @_Concurrency.MainActor(unsafe) open func stateDidChange(state: ViewModelState)
-  @_Concurrency.MainActor(unsafe) open func safeScrollToRow(at indexPath: Foundation.IndexPath, at scrollPosition: UIKit.UITableView.ScrollPosition, animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) open func roomDidUpdate(room: IMRoom)
+  @_Concurrency.MainActor(unsafe) public func reloadData()
+  @_Concurrency.MainActor(unsafe) public func insert(sections: [[IMMessage]], rows: [IMMessage])
+  @_Concurrency.MainActor(unsafe) public func insert(at sections: Foundation.IndexSet)
+  @_Concurrency.MainActor(unsafe) public func stateDidChange(state: ViewModelState)
+  @_Concurrency.MainActor(unsafe) public func safeScrollToRow(at indexPath: Foundation.IndexPath, at scrollPosition: UIKit.UITableView.ScrollPosition, animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public func roomDidUpdate(room: IMRoom)
   @_Concurrency.MainActor(unsafe) public func messageSendingError(_ error: IMMessageSendingError)
+  @_Concurrency.MainActor(unsafe) public func typingIndicatorDidChange(text: Swift.String?)
 }
 extension IMChatRoomViewController : UIKit.UITableViewDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
@@ -5296,7 +5300,7 @@ extension IMChatRoomViewController : UIKit.UITableViewDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func scrollViewDidEndDragging(_ scrollView: UIKit.UIScrollView, willDecelerate decelerate: Swift.Bool)
   @_Concurrency.MainActor(unsafe) @objc dynamic open func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
   @_Concurrency.MainActor(unsafe) @objc dynamic open func scrollViewDidEndScrollingAnimation(_ scrollView: UIKit.UIScrollView)
-  @_Concurrency.MainActor(unsafe) open func hideTopSectionHeaderView(animated: Swift.Bool = true)
+  @_Concurrency.MainActor(unsafe) public func hideTopSectionHeaderView(animated: Swift.Bool = true)
 }
 extension IMChatRoomViewController : UIKit.UITableViewDataSource {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
@@ -5304,8 +5308,8 @@ extension IMChatRoomViewController : UIKit.UITableViewDataSource {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
 }
 extension IMChatRoomViewController : IMMessageTableViewCellDelegate {
-  @_Concurrency.MainActor(unsafe) open func mentionDidTap(user: IMUser)
-  @_Concurrency.MainActor(unsafe) open func imageDidTap(image: IMImage)
+  @_Concurrency.MainActor(unsafe) public func mentionDidTap(user: IMUser)
+  @_Concurrency.MainActor(unsafe) public func imageDidTap(image: IMImage)
 }
 extension IMChatRoomViewController : FloatingPanel.FloatingPanelControllerDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func floatingPanel(_ fpc: FloatingPanel.FloatingPanelController, shouldRemoveAt location: CoreFoundation.CGPoint, with velocity: CoreFoundation.CGVector) -> Swift.Bool
