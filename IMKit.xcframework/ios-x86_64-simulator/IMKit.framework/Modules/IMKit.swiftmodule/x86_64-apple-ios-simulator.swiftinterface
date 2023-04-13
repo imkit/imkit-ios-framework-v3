@@ -1,11 +1,12 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)
 // swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name IMKit
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import AVKit
 import ActiveLabel
 import Alamofire
+import Alamofire/*.Alamofire*/
 import CommonCrypto
 import CommonCrypto/*.CC_LONG*/
 import CommonCrypto/*.CC_MD5*/
@@ -206,7 +207,7 @@ extension IMUtilityInputViewController : UIKit.UICollectionViewDelegateFlowLayou
   @objc deinit
 }
 @_inheritsConvenienceInitializers public class IMMoyaProvider<Target> : Moya.MoyaProvider<Target> where Target : Moya.TargetType {
-  override public init(endpointClosure: @escaping Moya.MoyaProvider<Target>.EndpointClosure = super, requestClosure: @escaping Moya.MoyaProvider<Target>.RequestClosure = super, stubClosure: @escaping Moya.MoyaProvider<Target>.StubClosure = super, callbackQueue: Dispatch.DispatchQueue? = nil, session: Moya.Session = super, plugins: [Moya.PluginType] = super, trackInflights: Swift.Bool = super)
+  override public init(endpointClosure: @escaping Moya.MoyaProvider<Target>.EndpointClosure = super, requestClosure: @escaping Moya.MoyaProvider<Target>.RequestClosure = super, stubClosure: @escaping Moya.MoyaProvider<Target>.StubClosure = super, callbackQueue: Dispatch.DispatchQueue? = nil, session: Moya.Session = super, plugins: [any Moya.PluginType] = super, trackInflights: Swift.Bool = super)
   @objc deinit
 }
 public enum IMService {
@@ -240,7 +241,7 @@ extension IMService : IMTargetType {
   public func parse(_ response: Moya.Response) -> PromiseKit.Promise<IMService.ResponseType>
 }
 @_hasMissingDesignatedInitializers public class IMMessagesManagerDelegateBox {
-  weak public var weakRef: IMMessagesManagerDelegate?
+  weak public var weakRef: (any IMMessagesManagerDelegate)?
   @objc deinit
 }
 public enum IMMessageSendingError {
@@ -279,7 +280,7 @@ extension IMProgressDelegate {
   public func requestDidResponse()
 }
 @_hasMissingDesignatedInitializers public class IMProgressDelegateBox {
-  weak public var weakRef: IMProgressDelegate?
+  weak public var weakRef: (any IMProgressDelegate)?
   @objc deinit
 }
 @_hasMissingDesignatedInitializers open class IMMessagesManager {
@@ -301,7 +302,7 @@ extension IMProgressDelegate {
   public var highlightedMessageID: Swift.String?
   public var highlightedText: Swift.String?
   public func configure(roomID: Swift.String)
-  public func configure(delegate: IMMessagesManagerDelegate)
+  public func configure(delegate: any IMMessagesManagerDelegate)
   public func fetchUnsyncMessagesFromServer() -> PromiseKit.Promise<[IMMessage]>
   public func fetchMessagesFromLocalStorage(numberOfMessages: Swift.Int? = nil, after messageID1: Swift.String? = nil, before messageID2: Swift.String? = nil, messageType: IMMessageType? = nil) -> PromiseKit.Promise<[IMMessage]>
   public func fetchMessagesFromRealm(before date1: Foundation.Date, after date2: Foundation.Date, numberOfPreload: Swift.Int) -> PromiseKit.Promise<[IMMessage]>
@@ -348,8 +349,8 @@ extension IMMessagesManager : IMSocketManagerDelegate {
   @objc required override dynamic public init()
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
-  @objc final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
-  @objc final public func isEqual(toDiffableObject object: IGListDiffKit.ListDiffable?) -> Swift.Bool
+  @objc final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
+  @objc final public func isEqual(toDiffableObject object: (any IGListDiffKit.ListDiffable)?) -> Swift.Bool
   final public func copy() -> IMLinkPreview
   @objc deinit
 }
@@ -566,7 +567,7 @@ final public class IMFetchRoomGroupsTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLayoutSubviews()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillAppear(_ animated: Swift.Bool)
-  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: UIKit.UIViewControllerTransitionCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewWillTransition(to size: CoreFoundation.CGSize, with coordinator: any UIKit.UIViewControllerTransitionCoordinator)
   @_Concurrency.MainActor(unsafe) public func updateEmptyView()
   @_Concurrency.MainActor(unsafe) public func showTopBottomViewsIfNeeded(_ show: Swift.Bool)
   @_Concurrency.MainActor(unsafe) override open func keyboardWillShow(with keyboardRect: CoreFoundation.CGRect, duration: Foundation.TimeInterval, animationCurve: Swift.UInt)
@@ -591,15 +592,15 @@ public protocol NetworkClientType {
 }
 @_inheritsConvenienceInitializers public class IMSession : Alamofire.Session {
   public static var serverTrustManager: Alamofire.ServerTrustManager?
-  public static var requestInterceptor: Alamofire.RequestInterceptor?
+  public static var requestInterceptor: (any Alamofire.RequestInterceptor)?
   public var isEnabled: Swift.Bool
   public static let shared: IMSession
-  override public init(session: Foundation.URLSession, delegate: Alamofire.SessionDelegate, rootQueue: Dispatch.DispatchQueue, startRequestsImmediately: Swift.Bool = super, requestQueue: Dispatch.DispatchQueue? = nil, serializationQueue: Dispatch.DispatchQueue? = nil, interceptor: Alamofire.RequestInterceptor? = nil, serverTrustManager: Alamofire.ServerTrustManager? = nil, redirectHandler: Alamofire.RedirectHandler? = nil, cachedResponseHandler: Alamofire.CachedResponseHandler? = nil, eventMonitors: [Alamofire.EventMonitor] = super)
+  override public init(session: Foundation.URLSession, delegate: Alamofire.SessionDelegate, rootQueue: Dispatch.DispatchQueue, startRequestsImmediately: Swift.Bool = super, requestQueue: Dispatch.DispatchQueue? = nil, serializationQueue: Dispatch.DispatchQueue? = nil, interceptor: (any Alamofire.RequestInterceptor)? = nil, serverTrustManager: Alamofire.ServerTrustManager? = nil, redirectHandler: (any Alamofire.RedirectHandler)? = nil, cachedResponseHandler: (any Alamofire.CachedResponseHandler)? = nil, eventMonitors: [any Alamofire.EventMonitor] = super)
   @objc deinit
 }
 @_hasMissingDesignatedInitializers open class IMRequestInterceptor : Alamofire.RequestInterceptor {
-  open func adapt(_ urlRequest: Foundation.URLRequest, for session: Alamofire.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, Swift.Error>) -> Swift.Void)
-  open func retry(_ request: Alamofire.Request, for session: Alamofire.Session, dueTo error: Swift.Error, completion: @escaping (Alamofire.RetryResult) -> Swift.Void)
+  open func adapt(_ urlRequest: Foundation.URLRequest, for session: Alamofire.Session, completion: @escaping (Swift.Result<Foundation.URLRequest, any Swift.Error>) -> Swift.Void)
+  open func retry(_ request: Alamofire.Request, for session: Alamofire.Session, dueTo error: any Swift.Error, completion: @escaping (Alamofire.RetryResult) -> Swift.Void)
   @objc deinit
 }
 public struct NetworkClient : NetworkClientType {
@@ -705,7 +706,7 @@ public protocol IGListAdapterViewModelDelagate : AnyObject {
   @objc deinit
 }
 extension IMRoomViewController : IGListKit.ListAdapterDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func objects(for listAdapter: IGListKit.ListAdapter) -> [IGListDiffKit.ListDiffable]
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func objects(for listAdapter: IGListKit.ListAdapter) -> [any IGListDiffKit.ListDiffable]
   @_Concurrency.MainActor(unsafe) @objc dynamic public func listAdapter(_ listAdapter: IGListKit.ListAdapter, sectionControllerFor object: Any) -> IGListKit.ListSectionController
   @_Concurrency.MainActor(unsafe) @objc dynamic public func emptyView(for listAdapter: IGListKit.ListAdapter) -> UIKit.UIView?
 }
@@ -720,9 +721,9 @@ final public class IMRoomViewModel {
   final public var state: ViewModelState {
     get
   }
-  final public var data: [IGListDiffKit.ListDiffable]
+  final public var data: [any IGListDiffKit.ListDiffable]
   final public var roomID: Swift.String
-  public init(delegate: IGListAdapterViewModelDelagate, roomID: Swift.String)
+  public init(delegate: any IGListAdapterViewModelDelagate, roomID: Swift.String)
   final public func fetchRoom()
   @objc deinit
 }
@@ -846,7 +847,7 @@ extension IMMapViewController : MapKit.MKMapViewDelegate {
 }
 extension IMMapViewController : CoreLocation.CLLocationManagerDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func locationManager(_ manager: CoreLocation.CLLocationManager, didUpdateLocations locations: [CoreLocation.CLLocation])
-  @_Concurrency.MainActor(unsafe) @objc dynamic open func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: Swift.Error)
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func locationManager(_ manager: CoreLocation.CLLocationManager, didFailWithError error: any Swift.Error)
 }
 @objc @_inheritsConvenienceInitializers open class IMTextMessageSectionController : IGListKit.ListSectionController, IMMessageSectionController {
   public var message: IMMessage?
@@ -859,7 +860,7 @@ extension IMMapViewController : CoreLocation.CLLocationManagerDelegate {
   @objc deinit
 }
 extension IMTextMessageSectionController : IGListKit.ListAdapterDataSource {
-  @objc dynamic public func objects(for listAdapter: IGListKit.ListAdapter) -> [IGListDiffKit.ListDiffable]
+  @objc dynamic public func objects(for listAdapter: IGListKit.ListAdapter) -> [any IGListDiffKit.ListDiffable]
   @objc dynamic public func listAdapter(_ listAdapter: IGListKit.ListAdapter, sectionControllerFor object: Any) -> IGListKit.ListSectionController
   @objc dynamic public func emptyView(for listAdapter: IGListKit.ListAdapter) -> UIKit.UIView?
 }
@@ -966,7 +967,7 @@ public protocol IMMessageCell : UIKit.UICollectionViewCell {
   var longPressGestureRecognizer: UIKit.UILongPressGestureRecognizer { get set }
   var tapGestureRecognizer: UIKit.UITapGestureRecognizer { get set }
   var swipeGestureRecognizer: UIKit.UISwipeGestureRecognizer { get set }
-  var delegate: IMMessageCellDelegate? { get set }
+  var delegate: (any IMMessageCellDelegate)? { get set }
   var message: IMMessage? { get set }
   func updateUI()
   func layoutSendingIndicator(_ imageView: UIKit.UIImageView) -> UIKit.UIImageView
@@ -1058,7 +1059,7 @@ extension IMMessageCell {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) weak public var delegate: IMMessageCellDelegate?
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any IMMessageCellDelegate)?
   @_Concurrency.MainActor(unsafe) weak public var message: IMMessage? {
     get
     set
@@ -1234,7 +1235,7 @@ public protocol IMSearchResultsControllerDelegate : AnyObject {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) weak open var delegate: IMSearchResultsControllerDelegate?
+  @_Concurrency.MainActor(unsafe) weak open var delegate: (any IMSearchResultsControllerDelegate)?
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func viewDidLoad()
   @_Concurrency.MainActor(unsafe) open func updateUI()
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
@@ -1242,15 +1243,15 @@ public protocol IMSearchResultsControllerDelegate : AnyObject {
   @objc deinit
 }
 extension IMSearchResultsController : Parchment.PagingViewControllerDelegate {
-  @_Concurrency.MainActor(unsafe) open func pagingViewController(_: Parchment.PagingViewController, willScrollToItem pagingItem: Parchment.PagingItem, startingViewController: UIKit.UIViewController, destinationViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) open func pagingViewController(_: Parchment.PagingViewController, willScrollToItem pagingItem: any Parchment.PagingItem, startingViewController: UIKit.UIViewController, destinationViewController: UIKit.UIViewController)
 }
 extension IMSearchResultsController : Parchment.PagingViewControllerDataSource {
   @_Concurrency.MainActor(unsafe) open func numberOfViewControllers(in pagingViewController: Parchment.PagingViewController) -> Swift.Int
   @_Concurrency.MainActor(unsafe) open func pagingViewController(_: Parchment.PagingViewController, viewControllerAt index: Swift.Int) -> UIKit.UIViewController
-  @_Concurrency.MainActor(unsafe) open func pagingViewController(_: Parchment.PagingViewController, pagingItemAt index: Swift.Int) -> Parchment.PagingItem
+  @_Concurrency.MainActor(unsafe) open func pagingViewController(_: Parchment.PagingViewController, pagingItemAt index: Swift.Int) -> any Parchment.PagingItem
 }
 @objc @_Concurrency.MainActor(unsafe) open class IMRoomsTableViewController : UIKit.UIViewController {
-  @_Concurrency.MainActor(unsafe) weak public var delegate: IMSearchResultsControllerDelegate?
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any IMSearchResultsControllerDelegate)?
   @_Concurrency.MainActor(unsafe) open var tableView: UIKit.UITableView {
     get
     set
@@ -1284,7 +1285,7 @@ final public class IMUpdateRoomGroupsTask : NetworkRequest {
   final public var method: Alamofire.HTTPMethod {
     get
   }
-  final public var encoding: Alamofire.ParameterEncoding {
+  final public var encoding: any Alamofire.ParameterEncoding {
     get
   }
   final public var httpBody: Foundation.Data? {
@@ -1434,8 +1435,8 @@ final public class IMFetchQuittedRoomsTask : NetworkRequest {
   public init(id: Swift.String, nickname: Swift.String? = nil, avatarString: Swift.String? = nil, city: Swift.String? = nil, country: Swift.String? = nil)
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
-  @objc final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
-  @objc final public func isEqual(toDiffableObject object: IGListDiffKit.ListDiffable?) -> Swift.Bool
+  @objc final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
+  @objc final public func isEqual(toDiffableObject object: (any IGListDiffKit.ListDiffable)?) -> Swift.Bool
   final public func copy() -> IMUser
   @objc deinit
 }
@@ -1470,7 +1471,7 @@ final public class IMAddMembersTask : NetworkRequest {
   final public var differenceIdentifier: Swift.String {
     get
   }
-  final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
+  final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
   final public func isContentEqual(to source: IMRoomGroup) -> Swift.Bool
   final public func copy() -> IMRoomGroup
   public typealias DifferenceIdentifier = Swift.String
@@ -1533,7 +1534,7 @@ final public class IMSubscribeTask : NetworkRequest {
   @objc required override dynamic public init()
   public init(from json: SwiftyJSON.JSON)
   @objc deinit
-  public init(from decoder: Swift.Decoder) throws
+  public init(from decoder: any Swift.Decoder) throws
 }
 public enum IMRoomType : Swift.String {
   case Group
@@ -1639,7 +1640,7 @@ public enum IMRoomType : Swift.String {
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func indexedProperties() -> [Swift.String]
   @objc override public static func ignoredProperties() -> [Swift.String]
-  final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
+  final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
   final public func isContentEqual(to source: IMRoom) -> Swift.Bool
   final public func setMemberProperty(with newMemberProperty: IMMemberProperty)
   final public var isTranslationEnabled: Swift.Bool {
@@ -1658,13 +1659,13 @@ public enum IMAudioPlayerState : Swift.Equatable {
   case finish
   case pause
   case cancel
-  case error(Swift.Error)
+  case error(any Swift.Error)
 }
 public protocol IMAudioPlayerDelegate : AnyObject {
   func audioPlayer(_ player: IMAudioPlayer, withStates state: IMAudioPlayerState)
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers open class IMAudioPlayer : ObjectiveC.NSObject {
-  weak public var delegate: IMAudioPlayerDelegate?
+  weak public var delegate: (any IMAudioPlayerDelegate)?
   public var state: IMAudioPlayerState {
     get
   }
@@ -1672,7 +1673,7 @@ public protocol IMAudioPlayerDelegate : AnyObject {
 }
 extension IMAudioPlayer : AVFAudio.AVAudioPlayerDelegate {
   @objc dynamic open func audioPlayerDidFinishPlaying(_ player: AVFAudio.AVAudioPlayer, successfully flag: Swift.Bool)
-  @objc dynamic open func audioPlayerDecodeErrorDidOccur(_ player: AVFAudio.AVAudioPlayer, error: Swift.Error?)
+  @objc dynamic open func audioPlayerDecodeErrorDidOccur(_ player: AVFAudio.AVAudioPlayer, error: (any Swift.Error)?)
   @objc dynamic open func audioPlayerBeginInterruption(_ player: AVFAudio.AVAudioPlayer)
   @objc dynamic open func audioPlayerEndInterruption(_ player: AVFAudio.AVAudioPlayer, withOptions flags: Swift.Int)
 }
@@ -1835,7 +1836,7 @@ public protocol IMMentionsTableViewDelegate : AnyObject {
   @_Concurrency.MainActor(unsafe) open var filteredUsers: [IMUser] {
     get
   }
-  @_Concurrency.MainActor(unsafe) weak open var customDelegate: IMMentionsTableViewDelegate?
+  @_Concurrency.MainActor(unsafe) weak open var customDelegate: (any IMMentionsTableViewDelegate)?
   @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect, style: UIKit.UITableView.Style)
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
   @_Concurrency.MainActor(unsafe) @objc override dynamic open func reloadData()
@@ -1942,7 +1943,7 @@ public enum ViewModelState : Swift.Equatable {
   case loaded
   case fullyLoaded
   case initial
-  case error(Swift.Error)
+  case error(any Swift.Error)
   public static func == (lhs: ViewModelState, rhs: ViewModelState) -> Swift.Bool
 }
 open class IMRoomsViewModel {
@@ -1962,7 +1963,7 @@ open class IMRoomsViewModel {
   public var isEmpty: Swift.Bool {
     get
   }
-  public init(delegate: IMRoomsViewModelDelegate)
+  public init(delegate: any IMRoomsViewModelDelegate)
   public var isFiltering: Swift.Bool {
     get
   }
@@ -2031,7 +2032,7 @@ final public class IMMessagesViewModel {
   final public var state: ViewModelState {
     get
   }
-  final public var data: [IGListDiffKit.ListDiffable]
+  final public var data: [any IGListDiffKit.ListDiffable]
   final public let roomID: Swift.String
   final public var room: IMRoom? {
     get
@@ -2040,7 +2041,7 @@ final public class IMMessagesViewModel {
   final public var typingIndicatorText: Swift.String?
   final public var hasAllMessages: Swift.Bool
   final public var isRemovedFromRoom: Swift.Bool
-  public init(roomID: Swift.String, delegate: IMMessagesViewModelDelagate)
+  public init(roomID: Swift.String, delegate: any IMMessagesViewModelDelagate)
   final public func fetchMessages()
   final public func loadMessages()
   final public func read(message: IMMessage?)
@@ -2087,7 +2088,7 @@ extension IMMessagesViewModel : IMMessagesManagerDelegate {
   final public var differenceIdentifier: Swift.String {
     get
   }
-  final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
+  final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
   final public func isContentEqual(to source: IMInvitation) -> Swift.Bool
   final public func copy() -> IMInvitation
   public typealias DifferenceIdentifier = Swift.String
@@ -2564,7 +2565,7 @@ extension Swift.String {
   public var IMLocalized: Swift.String {
     get
   }
-  public func IMLocalized(_ arguments: Swift.CVarArg...) -> Swift.String
+  public func IMLocalized(_ arguments: any Swift.CVarArg...) -> Swift.String
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMCarouselTemplateTableViewCell : IMMessageTableViewCell {
   @_Concurrency.MainActor(unsafe) open var collectionView: UIKit.UICollectionView {
@@ -2649,7 +2650,7 @@ public protocol IMTagTableViewCellDelegate : AnyObject {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) weak open var delegate: IMTagTableViewCellDelegate?
+  @_Concurrency.MainActor(unsafe) weak open var delegate: (any IMTagTableViewCellDelegate)?
   @_Concurrency.MainActor(unsafe) open var mainTag: IMTag? {
     get
     set
@@ -2694,7 +2695,7 @@ public protocol IMPhotoInputViewControllerDelegate : AnyObject {
   func didUpdateSelectedAssets(_ selectedAssets: [Photos.PHAsset])
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMPhotoInputViewController : UIKit.UIInputViewController {
-  @_Concurrency.MainActor(unsafe) public var delegate: IMPhotoInputViewControllerDelegate?
+  @_Concurrency.MainActor(unsafe) public var delegate: (any IMPhotoInputViewControllerDelegate)?
   @_Concurrency.MainActor(unsafe) public var selectedAssets: [Photos.PHAsset] {
     get
   }
@@ -2807,7 +2808,7 @@ public protocol IMChatRoomViewModelDelagate : AnyObject {
   func typingIndicatorDidChange(text: Swift.String?)
 }
 open class IMChatRoomViewModel {
-  weak open var delegate: IMChatRoomViewModelDelagate?
+  weak open var delegate: (any IMChatRoomViewModelDelagate)?
   final public let roomID: Swift.String
   open var room: IMRoom? {
     get
@@ -2862,7 +2863,7 @@ extension IMSocketManagerDelegate {
   public func socketDidReceiveRoomPref(json: SwiftyJSON.JSON)
 }
 @_hasMissingDesignatedInitializers public class IMSocketManagerDelegateBox {
-  weak public var weakRef: IMSocketManagerDelegate?
+  weak public var weakRef: (any IMSocketManagerDelegate)?
   @objc deinit
 }
 public enum IMSocketEventType : Swift.String {
@@ -2901,7 +2902,7 @@ public enum IMSocketEventType : Swift.String {
     get
   }
   final public var encodingType: IMSocketManager.EncodingType
-  final public func configure(with delegate: IMSocketManagerDelegate)
+  final public func configure(with delegate: any IMSocketManagerDelegate)
   final public func connect()
   final public func disconnect()
   final public func type(roomID: Swift.String, text: Swift.String)
@@ -3100,7 +3101,7 @@ extension IMRoomsManagerDelegate {
   public func roomGroupDidDelete(roomGroupID: Swift.String)
 }
 @_hasMissingDesignatedInitializers public class IMRoomsManagerDelegateBox {
-  weak public var weakRef: IMRoomsManagerDelegate?
+  weak public var weakRef: (any IMRoomsManagerDelegate)?
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class IMRoomsManager {
@@ -3109,12 +3110,12 @@ extension IMRoomsManagerDelegate {
   final public var listOfdeletingRoomID: [Swift.String]
   final public var numberOfRoomsPerRequest: Swift.Int
   final public var highlightedText: Swift.String?
-  final public func configure(delegate: IMRoomsManagerDelegate)
+  final public func configure(delegate: any IMRoomsManagerDelegate)
   final public func fetchUnsyncRoomsFromServer() -> PromiseKit.Promise<[IMRoom]>
   final public func fetchRoomsFromLocalStorage(numberOfRooms: Swift.Int, after roomID: Swift.String? = nil, filter: Foundation.NSPredicate? = nil) -> PromiseKit.Promise<[IMRoom]>
   final public func fetchRoomFromLocalStorage(roomID: Swift.String) -> PromiseKit.Guarantee<IMRoom?>
   final public func searchRoomFromLocalStorage(keyword: Swift.String) -> [IMRoom]
-  final public func leaveRoom(roomID: Swift.String, isSystemMessageEnabled: Swift.Bool = true, deleteData: Swift.Bool = true, completion: ((Swift.Bool, Swift.Error?) -> Swift.Void)? = nil)
+  final public func leaveRoom(roomID: Swift.String, isSystemMessageEnabled: Swift.Bool = true, deleteData: Swift.Bool = true, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
   final public func addRoomToLocalStorage(room: IMRoom)
   final public func addRoomsToLocalStorage(rooms: [IMRoom])
   final public func pinRoom(roomID: Swift.String)
@@ -3161,7 +3162,7 @@ final public class IMTranslationDetectLanguageTask : NetworkRequest {
   final public var endpoint: Swift.String {
     get
   }
-  final public var encoding: Alamofire.ParameterEncoding {
+  final public var encoding: any Alamofire.ParameterEncoding {
     get
   }
   final public var method: Alamofire.HTTPMethod {
@@ -3929,10 +3930,10 @@ final public class IMReadMessageTask : NetworkRequest {
 }
 extension IMFileViewerViewController : QuickLook.QLPreviewControllerDataSource {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func numberOfPreviewItems(in controller: QuickLook.QLPreviewController) -> Swift.Int
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func previewController(_ controller: QuickLook.QLPreviewController, previewItemAt index: Swift.Int) -> QuickLook.QLPreviewItem
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func previewController(_ controller: QuickLook.QLPreviewController, previewItemAt index: Swift.Int) -> any QuickLook.QLPreviewItem
 }
 extension IMFileViewerViewController : QuickLook.QLPreviewControllerDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func previewController(_ controller: QuickLook.QLPreviewController, shouldOpen url: Foundation.URL, for item: QuickLook.QLPreviewItem) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func previewController(_ controller: QuickLook.QLPreviewController, shouldOpen url: Foundation.URL, for item: any QuickLook.QLPreviewItem) -> Swift.Bool
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMCarouselTemplateCollectionViewCell : IMMessageCollectionViewCell {
   @_Concurrency.MainActor(unsafe) public static var collectionViewContentInsets: UIKit.UIEdgeInsets
@@ -4293,7 +4294,7 @@ final public class IMFetchRoomsTask : NetworkRequest {
   @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
 }
 extension IMMessagesViewController : IGListKit.ListAdapterDataSource {
-  @_Concurrency.MainActor(unsafe) @objc dynamic open func objects(for listAdapter: IGListKit.ListAdapter) -> [IGListDiffKit.ListDiffable]
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func objects(for listAdapter: IGListKit.ListAdapter) -> [any IGListDiffKit.ListDiffable]
   @_Concurrency.MainActor(unsafe) @objc dynamic open func listAdapter(_ listAdapter: IGListKit.ListAdapter, sectionControllerFor object: Any) -> IGListKit.ListSectionController
   @_Concurrency.MainActor(unsafe) @objc dynamic open func emptyView(for listAdapter: IGListKit.ListAdapter) -> UIKit.UIView?
 }
@@ -4319,16 +4320,16 @@ extension IMMessagesViewController : UIKit.UICollectionViewDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func scrollViewDidEndDecelerating(_ scrollView: UIKit.UIScrollView)
 }
 extension IMMessagesViewController : UIKit.UINavigationControllerDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, animationControllerFor operation: UIKit.UINavigationController.Operation, from fromVC: UIKit.UIViewController, to toVC: UIKit.UIViewController) -> UIKit.UIViewControllerAnimatedTransitioning?
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, interactionControllerFor animationController: UIKit.UIViewControllerAnimatedTransitioning) -> UIKit.UIViewControllerInteractiveTransitioning?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, animationControllerFor operation: UIKit.UINavigationController.Operation, from fromVC: UIKit.UIViewController, to toVC: UIKit.UIViewController) -> (any UIKit.UIViewControllerAnimatedTransitioning)?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, interactionControllerFor animationController: any UIKit.UIViewControllerAnimatedTransitioning) -> (any UIKit.UIViewControllerInteractiveTransitioning)?
 }
 extension IMMessagesViewController : UIKit.UIPopoverPresentationControllerDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic open func adaptivePresentationStyle(for controller: UIKit.UIPresentationController) -> UIKit.UIModalPresentationStyle
 }
 @_hasMissingDesignatedInitializers final public class IMDate : IGListDiffKit.ListDiffable {
   final public let value: Foundation.Date
-  @objc final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
-  @objc final public func isEqual(toDiffableObject object: IGListDiffKit.ListDiffable?) -> Swift.Bool
+  @objc final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
+  @objc final public func isEqual(toDiffableObject object: (any IGListDiffKit.ListDiffable)?) -> Swift.Bool
   @objc deinit
 }
 public enum IMKitTranslationError : Foundation.LocalizedError {
@@ -4354,7 +4355,7 @@ final public class IMTranslationTask : NetworkRequest {
   final public var endpoint: Swift.String {
     get
   }
-  final public var encoding: Alamofire.ParameterEncoding {
+  final public var encoding: any Alamofire.ParameterEncoding {
     get
   }
   final public var method: Alamofire.HTTPMethod {
@@ -4927,7 +4928,7 @@ final public class IMTranslationTask : NetworkRequest {
 }
 public enum NetworkRequestError : Swift.Error {
   case DecodingError(error: Swift.DecodingError)
-  case JsonParsingError(error: Swift.Error)
+  case JsonParsingError(error: any Swift.Error)
   case UnknownError
   case NoNetworkConnection
   case ConnectionTimeout
@@ -4941,11 +4942,11 @@ public protocol NetworkRequest {
   var endpoint: Swift.String { get }
   var baseURL: Swift.String { get }
   var method: Alamofire.HTTPMethod { get }
-  var encoding: Alamofire.ParameterEncoding { get }
+  var encoding: any Alamofire.ParameterEncoding { get }
   var parameters: [Swift.String : Any]? { get }
   var headers: Alamofire.HTTPHeaders { get }
   var uploadData: Foundation.Data { get }
-  var networkClient: NetworkClientType { get }
+  var networkClient: any NetworkClientType { get }
   var mimeType: Swift.String { get }
   var downloadProgress: Alamofire.DownloadRequest.ProgressHandler { get }
   var downloadFileDestination: Alamofire.DownloadRequest.Destination { get }
@@ -4960,7 +4961,7 @@ extension NetworkRequest {
   public var method: Alamofire.HTTPMethod {
     get
   }
-  public var encoding: Alamofire.ParameterEncoding {
+  public var encoding: any Alamofire.ParameterEncoding {
     get
   }
   public var parameters: [Swift.String : Any]? {
@@ -4972,7 +4973,7 @@ extension NetworkRequest {
   public var uploadData: Foundation.Data {
     get
   }
-  public var networkClient: NetworkClientType {
+  public var networkClient: any NetworkClientType {
     get
   }
   public var mimeType: Swift.String {
@@ -4986,7 +4987,7 @@ extension NetworkRequest {
   }
 }
 public struct CustomizedEncoding : Alamofire.ParameterEncoding {
-  public func encode(_ urlRequest: Alamofire.URLRequestConvertible, with parameters: Alamofire.Parameters?) throws -> Foundation.URLRequest
+  public func encode(_ urlRequest: any Alamofire.URLRequestConvertible, with parameters: Alamofire.Parameters?) throws -> Foundation.URLRequest
 }
 extension NetworkRequest where Self.ResponseType == () {
   public var responseHandler: (Foundation.Data) throws -> PromiseKit.Promise<()> {
@@ -5069,13 +5070,13 @@ public protocol IMNetworkReachabilityManagerDelegate : AnyObject {
   func networkStatusChanged(_ status: Alamofire.NetworkReachabilityManager.NetworkReachabilityStatus)
 }
 @_hasMissingDesignatedInitializers public class IMNetworkReachabilityManagerDelegateBox {
-  weak public var weakRef: IMNetworkReachabilityManagerDelegate?
+  weak public var weakRef: (any IMNetworkReachabilityManagerDelegate)?
   @objc deinit
 }
 @_hasMissingDesignatedInitializers final public class IMNetworkReachabilityManager {
   public static let shared: IMNetworkReachabilityManager
-  final public func startNotify(delegate: IMNetworkReachabilityManagerDelegate)
-  final public func stopNotify(delegate: IMNetworkReachabilityManagerDelegate)
+  final public func startNotify(delegate: any IMNetworkReachabilityManagerDelegate)
+  final public func stopNotify(delegate: any IMNetworkReachabilityManagerDelegate)
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class IMResponseObjectView : UIKit.UIView {
@@ -5326,8 +5327,8 @@ extension IMChatRoomViewController : IMNetworkReachabilityManagerDelegate {
   @_Concurrency.MainActor(unsafe) public func networkStatusChanged(_ status: Alamofire.NetworkReachabilityManager.NetworkReachabilityStatus)
 }
 extension IMChatRoomViewController : UIKit.UINavigationControllerDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, animationControllerFor operation: UIKit.UINavigationController.Operation, from fromVC: UIKit.UIViewController, to toVC: UIKit.UIViewController) -> UIKit.UIViewControllerAnimatedTransitioning?
-  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, interactionControllerFor animationController: UIKit.UIViewControllerAnimatedTransitioning) -> UIKit.UIViewControllerInteractiveTransitioning?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, animationControllerFor operation: UIKit.UINavigationController.Operation, from fromVC: UIKit.UIViewController, to toVC: UIKit.UIViewController) -> (any UIKit.UIViewControllerAnimatedTransitioning)?
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func navigationController(_ navigationController: UIKit.UINavigationController, interactionControllerFor animationController: any UIKit.UIViewControllerAnimatedTransitioning) -> (any UIKit.UIViewControllerInteractiveTransitioning)?
 }
 extension IMChatRoomViewController : UIKit.UICollectionViewDelegate {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func collectionView(_ collectionView: UIKit.UICollectionView, didSelectItemAt indexPath: Foundation.IndexPath)
@@ -5413,11 +5414,11 @@ extension IMRoomsViewController : UIKit.UITableViewDataSourcePrefetching {
   @_Concurrency.MainActor(unsafe) @objc dynamic public func tableView(_ tableView: UIKit.UITableView, prefetchRowsAt indexPaths: [Foundation.IndexPath])
 }
 extension IMRoomsViewController : UIKit.UITableViewDragDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, itemsForBeginning session: UIKit.UIDragSession, at indexPath: Foundation.IndexPath) -> [UIKit.UIDragItem]
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, itemsForBeginning session: any UIKit.UIDragSession, at indexPath: Foundation.IndexPath) -> [UIKit.UIDragItem]
 }
 extension IMRoomsViewController : UIKit.UITableViewDropDelegate {
-  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, performDropWith coordinator: UIKit.UITableViewDropCoordinator)
-  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, dropSessionDidUpdate session: UIKit.UIDropSession, withDestinationIndexPath destinationIndexPath: Foundation.IndexPath?) -> UIKit.UITableViewDropProposal
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, performDropWith coordinator: any UIKit.UITableViewDropCoordinator)
+  @_Concurrency.MainActor(unsafe) @objc dynamic open func tableView(_ tableView: UIKit.UITableView, dropSessionDidUpdate session: any UIKit.UIDropSession, withDestinationIndexPath destinationIndexPath: Foundation.IndexPath?) -> UIKit.UITableViewDropProposal
 }
 extension IMRoomsViewController : IMRoomsViewModelDelegate {
   @_Concurrency.MainActor(unsafe) public func reloadItems(at indexPaths: [Foundation.IndexPath])
@@ -5738,7 +5739,7 @@ extension IMInputAccessoryView : IMPhotoInputViewControllerDelegate {
   @_Concurrency.MainActor(unsafe) open func didUpdateSelectedAssets(_ selectedAssets: [Photos.PHAsset])
 }
 extension IMInputAccessoryView : SPUIDelegate {
-  @_Concurrency.MainActor(unsafe) open func spViewDidSelectSticker(_ view: SPUIView, sticker: SPSticker)
+  @_Concurrency.MainActor(unsafe) open func spViewDidSelectSticker(_ view: any SPUIView, sticker: SPSticker)
 }
 public enum IMMessageType {
   case Text
@@ -5871,8 +5872,8 @@ public enum IMMessageGroupPosition : Swift.Equatable {
   @objc override public static func primaryKey() -> Swift.String?
   @objc override public static func ignoredProperties() -> [Swift.String]
   @objc override public static func indexedProperties() -> [Swift.String]
-  @objc final public func diffIdentifier() -> ObjectiveC.NSObjectProtocol
-  @objc final public func isEqual(toDiffableObject object: IGListDiffKit.ListDiffable?) -> Swift.Bool
+  @objc final public func diffIdentifier() -> any ObjectiveC.NSObjectProtocol
+  @objc final public func isEqual(toDiffableObject object: (any IGListDiffKit.ListDiffable)?) -> Swift.Bool
   final public func set(withRoomID roomID: Swift.String)
   final public func read(by uid: Swift.String)
   final public func removeMemberWhoReadThis(uid: Swift.String)
@@ -5969,7 +5970,7 @@ public protocol IMImageViewerCollectionViewCellDelegate : AnyObject {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) weak public var delegate: IMImageViewerCollectionViewCellDelegate?
+  @_Concurrency.MainActor(unsafe) weak public var delegate: (any IMImageViewerCollectionViewCellDelegate)?
   @_Concurrency.MainActor(unsafe) weak public var image: IMImage? {
     get
     set
@@ -6060,7 +6061,7 @@ public protocol IMMessageTableViewCellDelegate : AnyObject {
     get
     set
   }
-  @_Concurrency.MainActor(unsafe) weak open var delegate: IMMessageTableViewCellDelegate?
+  @_Concurrency.MainActor(unsafe) weak open var delegate: (any IMMessageTableViewCellDelegate)?
   @_Concurrency.MainActor(unsafe) weak open var viewController: UIKit.UIViewController?
   @_Concurrency.MainActor(unsafe) public var isIncomingMessage: Swift.Bool {
     get
